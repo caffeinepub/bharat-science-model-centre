@@ -1,21 +1,44 @@
-import { ExternalBlob } from "@/backend";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useSubmitEnquiry } from "@/hooks/useQueries";
-import {
-  CheckCircle,
-  FlaskConical,
-  Loader2,
-  Paperclip,
-  Send,
-} from "lucide-react";
-import { useRef, useState } from "react";
+import { CheckCircle, FlaskConical, Loader2, Send } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
+const WHATSAPP_NUMBER = "919999899973";
+
+function sendWhatsAppEnquiry({
+  name,
+  phone,
+  email,
+  organization,
+  message,
+}: {
+  name: string;
+  phone: string;
+  email: string;
+  organization: string;
+  message: string;
+}) {
+  const lines = [
+    "*New Enquiry - Bharat Science Model Centre*",
+    "",
+    `*Name:* ${name}`,
+    `*Phone:* ${phone}`,
+    `*Email:* ${email}`,
+  ];
+  if (organization.trim()) {
+    lines.push(`*Organization:* ${organization}`);
+  }
+  lines.push("", "*Requirement:*", message);
+
+  const text = lines.join("\n");
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank", "noopener,noreferrer");
+}
+
 export default function EnquiryPage() {
-  const submit = useSubmitEnquiry();
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -23,9 +46,8 @@ export default function EnquiryPage() {
     organization: "",
     message: "",
   });
-  const [file, setFile] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const fileRef = useRef<HTMLInputElement>(null);
 
   const set =
     (k: keyof typeof form) =>
@@ -38,23 +60,20 @@ export default function EnquiryPage() {
       toast.error("Please fill in all required fields.");
       return;
     }
-    let attachment: ExternalBlob | null = null;
-    if (file) {
-      const bytes = new Uint8Array(await file.arrayBuffer());
-      attachment = ExternalBlob.fromBytes(bytes);
-    }
+    setLoading(true);
     try {
-      await submit.mutateAsync({
+      sendWhatsAppEnquiry({
         name: form.name,
-        email: form.email,
         phone: form.phone,
+        email: form.email,
         organization: form.organization,
         message: form.message,
-        attachment,
       });
       setSubmitted(true);
     } catch {
-      toast.error("Submission failed. Please try again.");
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -69,11 +88,11 @@ export default function EnquiryPage() {
             <CheckCircle className="w-10 h-10 text-teal" />
           </div>
           <h2 className="text-2xl font-bold text-foreground mb-3">
-            Enquiry Submitted!
+            Enquiry Sent!
           </h2>
           <p className="text-muted-text mb-6">
-            Thank you for reaching out. We&apos;ve received your enquiry and
-            will get back to you within 24 hours.
+            Your enquiry has been sent to WhatsApp. We will get back to you
+            within 24 hours.
           </p>
           <Button
             onClick={() => {
@@ -85,7 +104,6 @@ export default function EnquiryPage() {
                 organization: "",
                 message: "",
               });
-              setFile(null);
             }}
             className="bg-teal hover:bg-teal-hover text-white rounded-full"
             data-ocid="enquiry.new_enquiry_button"
@@ -108,8 +126,8 @@ export default function EnquiryPage() {
             Send an Enquiry
           </h1>
           <p className="text-white/60 max-w-xl mx-auto text-sm">
-            Tell us what you need and we&apos;ll provide a customized quote for
-            your school or institution.
+            Fill in your details and we&apos;ll receive your enquiry directly on
+            WhatsApp.
           </p>
         </div>
       </div>
@@ -128,7 +146,8 @@ export default function EnquiryPage() {
                 Product / Service Enquiry
               </h2>
               <p className="text-xs text-muted-text">
-                Fields marked * are required
+                Fields marked * are required. Your enquiry will be sent via
+                WhatsApp.
               </p>
             </div>
           </div>
@@ -194,57 +213,21 @@ export default function EnquiryPage() {
               />
             </div>
 
-            <div className="space-y-1">
-              <Label htmlFor="enq-file">Attach File (optional)</Label>
-              <div className="flex items-center gap-3">
-                <label
-                  htmlFor="enq-file"
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg border border-card-border bg-section-alt text-sm text-muted-text hover:bg-teal-light hover:text-teal cursor-pointer transition-colors"
-                  data-ocid="enquiry.upload_button"
-                >
-                  <Paperclip className="w-4 h-4" />
-                  {file ? file.name : "Choose file"}
-                </label>
-                <input
-                  id="enq-file"
-                  type="file"
-                  className="hidden"
-                  ref={fileRef}
-                  onChange={(e) => setFile(e.target.files?.[0] ?? null)}
-                />
-                {file && (
-                  <button
-                    type="button"
-                    className="text-xs text-muted-text hover:text-destructive"
-                    onClick={() => {
-                      setFile(null);
-                      if (fileRef.current) fileRef.current.value = "";
-                    }}
-                  >
-                    Remove
-                  </button>
-                )}
-              </div>
-              <p className="text-xs text-muted-text">
-                Any file type accepted (max 10MB)
-              </p>
-            </div>
-
             <Button
               type="submit"
-              disabled={submit.isPending}
+              disabled={loading}
               className="w-full bg-teal hover:bg-teal-hover text-white font-semibold rounded-full py-3 h-auto"
               data-ocid="enquiry.submit_button"
             >
-              {submit.isPending ? (
+              {loading ? (
                 <>
                   <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                  Submitting...
+                  Sending...
                 </>
               ) : (
                 <>
                   <Send className="w-4 h-4 mr-2" />
-                  Submit Enquiry
+                  Send Enquiry via WhatsApp
                 </>
               )}
             </Button>
