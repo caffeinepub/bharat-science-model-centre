@@ -4,9 +4,15 @@ import AboutPage from "@/pages/AboutPage";
 import AdminPage from "@/pages/AdminPage";
 import CataloguePage from "@/pages/CataloguePage";
 import DistributorPage from "@/pages/DistributorPage";
+import EngineeringLabPage from "@/pages/EngineeringLabPage";
 import EnquiryPage from "@/pages/EnquiryPage";
+import HandwrittenPracticalFilesPage from "@/pages/HandwrittenPracticalFilesPage";
+import HandwrittenProjectsPage from "@/pages/HandwrittenProjectsPage";
 import HomePage from "@/pages/HomePage";
+import IGNOUAssignmentsPage from "@/pages/IGNOUAssignmentsPage";
+import PortraitsPage from "@/pages/PortraitsPage";
 import PrintedChartsPage from "@/pages/PrintedChartsPage";
+import SafetyEquipmentPage from "@/pages/SafetyEquipmentPage";
 import SchoolLabPackagePage from "@/pages/SchoolLabPackagePage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
@@ -70,6 +76,42 @@ const schoolLabPackageRoute = createRoute({
   component: SchoolLabPackagePage,
 });
 
+const engineeringLabRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/engineering-lab",
+  component: EngineeringLabPage,
+});
+
+const safetyEquipmentRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/safety-equipment",
+  component: SafetyEquipmentPage,
+});
+
+const portraitsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/portraits",
+  component: PortraitsPage,
+});
+
+const handwrittenProjectsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/handwritten-projects",
+  component: HandwrittenProjectsPage,
+});
+
+const handwrittenPracticalFilesRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/handwritten-practical-files",
+  component: HandwrittenPracticalFilesPage,
+});
+
+const ignoRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/ignou-assignments",
+  component: IGNOUAssignmentsPage,
+});
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
   aboutRoute,
@@ -79,6 +121,12 @@ const routeTree = rootRoute.addChildren([
   distributorRoute,
   printedChartsRoute,
   schoolLabPackageRoute,
+  engineeringLabRoute,
+  safetyEquipmentRoute,
+  portraitsRoute,
+  handwrittenProjectsRoute,
+  handwrittenPracticalFilesRoute,
+  ignoRoute,
 ]);
 
 const router = createRouter({ routeTree });

@@ -1,6 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowLeft, FileText } from "lucide-react";
+import { ArrowLeft, ExternalLink, FileText } from "lucide-react";
 import { motion } from "motion/react";
+
+const DRIVE_SUBCATEGORIES_URL =
+  "https://drive.google.com/drive/folders/1ybDzOinS-ti18r58IRgXDX7BlRDf0Ylv?usp=drive_link";
 
 const SUBCATEGORIES = [
   {
@@ -40,22 +43,22 @@ const SUBCATEGORIES = [
   },
   {
     name: "English Printed Charts",
-    img: "/assets/generated/charts-physics-realistic.dim_400x300.jpg",
+    img: "/assets/generated/charts-english-realistic.dim_400x300.jpg",
     desc: "Grammar rules, parts of speech, tenses, vocabulary, and sentence structure charts for English classrooms.",
   },
   {
     name: "Hindi Printed Charts",
-    img: "/assets/generated/charts-chemistry-realistic.dim_400x300.jpg",
+    img: "/assets/generated/charts-hindi-realistic.dim_400x300.jpg",
     desc: "Hindi varnamala, grammar, Devanagari script, and vocabulary charts for Hindi language classrooms.",
   },
   {
     name: "Sanskrit Printed Charts",
-    img: "/assets/generated/charts-biology-realistic.dim_400x300.jpg",
+    img: "/assets/generated/charts-sanskrit-realistic.dim_400x300.jpg",
     desc: "Sanskrit alphabet, grammar rules, shlokas, and script charts for Sanskrit language classrooms.",
   },
   {
     name: "Primary Printed Charts",
-    img: "/assets/generated/charts-maps-realistic.dim_400x300.jpg",
+    img: "/assets/generated/charts-primary-realistic.dim_400x300.jpg",
     desc: "Colorful alphabet, numbers, animals, shapes, and basic concept charts designed for primary school students.",
   },
 ];
@@ -73,21 +76,32 @@ export default function PrintedChartsPage() {
             <ArrowLeft className="w-4 h-4" />
             Back to Categories
           </Link>
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-full bg-teal/20 flex items-center justify-center">
-              <FileText className="w-7 h-7 text-teal" />
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-full bg-teal/20 flex items-center justify-center">
+                <FileText className="w-7 h-7 text-teal" />
+              </div>
+              <div>
+                <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-1">
+                  Product Category
+                </p>
+                <h1 className="text-3xl md:text-4xl font-bold text-white">
+                  Printed Charts
+                </h1>
+                <p className="text-white/60 text-sm mt-1">
+                  High-quality laminated educational charts for all subjects
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="text-teal text-sm font-semibold uppercase tracking-widest mb-1">
-                Product Category
-              </p>
-              <h1 className="text-3xl md:text-4xl font-bold text-white">
-                Printed Charts
-              </h1>
-              <p className="text-white/60 text-sm mt-1">
-                High-quality laminated educational charts for all subjects
-              </p>
-            </div>
+            <a
+              href={DRIVE_SUBCATEGORIES_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-teal hover:bg-teal-hover text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors self-start sm:self-auto"
+            >
+              <ExternalLink className="w-4 h-4" />
+              View Sub-Categories
+            </a>
           </div>
         </div>
       </div>

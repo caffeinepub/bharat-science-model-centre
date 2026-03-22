@@ -35,9 +35,10 @@ function InstagramIcon({ className }: { className?: string }) {
 
 export default function Footer() {
   return (
-    <footer className="bg-navy-dark text-white pt-12 pb-6">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-10">
+    <footer className="bg-navy-dark text-white">
+      {/* Desktop / Tablet: full footer */}
+      <div className="hidden sm:block max-w-7xl mx-auto px-6 pt-12 pb-6">
+        <div className="grid grid-cols-3 gap-8 mb-10">
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-3">
@@ -55,13 +56,12 @@ export default function Footer() {
             <p className="text-xs text-footer-text mt-2">
               GST: 06APQPK9109P2Z2
             </p>
-            {/* Social Media */}
             <div className="flex items-center gap-3 mt-4">
               <a
                 href="https://www.facebook.com/bharat.store"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow us on Facebook"
+                aria-label="Facebook"
                 className="w-9 h-9 rounded-full bg-white/10 hover:bg-blue-600 flex items-center justify-center transition-colors"
                 data-ocid="footer.facebook_link"
               >
@@ -71,8 +71,8 @@ export default function Footer() {
                 href="https://www.instagram.com/bharatstore"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow us on Instagram"
-                className="w-9 h-9 rounded-full bg-white/10 hover:bg-gradient-to-br hover:from-pink-500 hover:to-orange-400 flex items-center justify-center transition-colors"
+                aria-label="Instagram"
+                className="w-9 h-9 rounded-full bg-white/10 hover:bg-pink-500 flex items-center justify-center transition-colors"
                 data-ocid="footer.instagram_link"
               >
                 <InstagramIcon className="w-4 h-4 text-white" />
@@ -175,8 +175,7 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-footer-text">
+        <div className="border-t border-white/10 pt-6 flex items-center justify-between text-xs text-footer-text">
           <span>
             &copy; {new Date().getFullYear()} Bharat Science Model Centre. All
             rights reserved.
@@ -189,6 +188,107 @@ export default function Footer() {
           >
             Built with ❤️ using caffeine.ai
           </a>
+        </div>
+      </div>
+
+      {/* Mobile: compact single-row footer */}
+      <div className="sm:hidden px-4 py-4">
+        <div className="flex items-center justify-between mb-3">
+          {/* Brand mark */}
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-full bg-teal flex items-center justify-center shrink-0">
+              <Atom className="w-4 h-4 text-white" />
+            </div>
+            <div>
+              <p className="font-bold text-white text-xs leading-tight">
+                Bharat Science Model Centre
+              </p>
+              <p className="text-[10px] text-footer-text">
+                Est. 1993 · GST: 06APQPK9109P2Z2
+              </p>
+            </div>
+          </div>
+          {/* Social icons */}
+          <div className="flex items-center gap-2">
+            <a
+              href="https://www.facebook.com/bharat.store"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center"
+              data-ocid="footer.facebook_link_mobile"
+            >
+              <FacebookIcon className="w-3.5 h-3.5 text-white" />
+            </a>
+            <a
+              href="https://www.instagram.com/bharatstore"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              className="w-7 h-7 rounded-full bg-white/10 flex items-center justify-center"
+              data-ocid="footer.instagram_link_mobile"
+            >
+              <InstagramIcon className="w-3.5 h-3.5 text-white" />
+            </a>
+          </div>
+        </div>
+
+        {/* Quick contact row */}
+        <div className="flex items-center gap-3 mb-3 text-xs text-footer-text">
+          <a
+            href="tel:+919999899973"
+            className="flex items-center gap-1 hover:text-white transition-colors"
+          >
+            <Phone className="w-3 h-3" />
+            <span>+91 99998 99973</span>
+          </a>
+          <span className="text-white/20">·</span>
+          <a
+            href={MAPS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 hover:text-white transition-colors"
+          >
+            <MapPin className="w-3 h-3 text-teal" />
+            <span>Gurugram, HR</span>
+          </a>
+        </div>
+
+        {/* Links row */}
+        <div className="flex items-center gap-3 text-xs text-footer-text mb-3">
+          <Link
+            to="/"
+            className="hover:text-white transition-colors"
+            data-ocid="footer.home_link_mobile"
+          >
+            Home
+          </Link>
+          <span className="text-white/20">·</span>
+          <a
+            href={CATALOGUE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-white transition-colors"
+            data-ocid="footer.catalogue_link_mobile"
+          >
+            Catalogue
+          </a>
+          <span className="text-white/20">·</span>
+          <Link
+            to="/enquiry"
+            className="hover:text-white transition-colors"
+            data-ocid="footer.enquiry_link_mobile"
+          >
+            Enquiry
+          </Link>
+          <span className="text-white/20">·</span>
+          <Link to="/about" className="hover:text-white transition-colors">
+            About
+          </Link>
+        </div>
+
+        <div className="border-t border-white/10 pt-3 text-[10px] text-footer-text text-center">
+          &copy; {new Date().getFullYear()} Bharat Science Model Centre
         </div>
       </div>
     </footer>
