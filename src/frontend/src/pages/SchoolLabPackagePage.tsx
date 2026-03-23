@@ -1,3 +1,4 @@
+import { useSEO } from "@/hooks/useSEO";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Package } from "lucide-react";
 import { motion } from "motion/react";
@@ -36,6 +37,12 @@ const SUBCATEGORIES = [
 ];
 
 export default function SchoolLabPackagePage() {
+  useSEO({
+    title:
+      "School Laboratory Package | Complete CBSE Lab Setup | BSMC Gurugram India",
+    description:
+      "Complete turnkey CBSE-aligned school laboratory packages for Chemistry, Physics, Biology, Mathematics, and Geography labs. Equipment, chemicals, and furniture included. BSMC India.",
+  });
   return (
     <div className="min-h-screen bg-section-alt">
       {/* Page Header */}
@@ -57,7 +64,8 @@ export default function SchoolLabPackagePage() {
                 Product Category
               </p>
               <h1 className="text-3xl md:text-4xl font-bold text-white">
-                Package for Schools Laboratories
+                Complete CBSE School Laboratory Package — Chemistry, Physics,
+                Biology &amp; More
               </h1>
               <p className="text-white/60 text-sm mt-1">
                 Let our expert lab consultants help you with customized lab
@@ -94,7 +102,7 @@ export default function SchoolLabPackagePage() {
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
                     src={sub.img}
-                    alt={sub.name}
+                    alt={`${sub.name} CBSE school laboratory package India`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

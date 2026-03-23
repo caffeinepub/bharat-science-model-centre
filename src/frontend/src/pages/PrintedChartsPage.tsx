@@ -1,3 +1,4 @@
+import { useSEO } from "@/hooks/useSEO";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ExternalLink, FileText } from "lucide-react";
 import { motion } from "motion/react";
@@ -64,6 +65,12 @@ const SUBCATEGORIES = [
 ];
 
 export default function PrintedChartsPage() {
+  useSEO({
+    title:
+      "Printed Educational Charts | Science, Hindi, English, Sanskrit Charts | BSMC India",
+    description:
+      "High-quality printed educational charts for biology, chemistry, physics, mathematics, Hindi, English, Sanskrit, and primary school subjects. Wholesale supplier — Gurugram, India.",
+  });
   return (
     <div className="min-h-screen bg-section-alt">
       {/* Page Header */}
@@ -86,7 +93,8 @@ export default function PrintedChartsPage() {
                   Product Category
                 </p>
                 <h1 className="text-3xl md:text-4xl font-bold text-white">
-                  Printed Charts
+                  Printed Educational Charts — Science, Language &amp; Subject
+                  Charts for Schools
                 </h1>
                 <p className="text-white/60 text-sm mt-1">
                   High-quality laminated educational charts for all subjects
@@ -131,7 +139,7 @@ export default function PrintedChartsPage() {
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
                     src={sub.img}
-                    alt={sub.name}
+                    alt={`${sub.name} educational chart supplier India`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>

@@ -378,6 +378,76 @@ export default function AdminPage() {
             </div>
           </TabsContent>
         </Tabs>
+        <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
+          <h3 className="font-bold text-blue-900 mb-3">
+            📊 SEO Setup Guidance
+          </h3>
+          <div className="space-y-4 text-sm text-blue-800">
+            <div>
+              <h4 className="font-semibold mb-1">Google Search Console</h4>
+              <ol className="list-decimal ml-4 space-y-1">
+                <li>
+                  Go to{" "}
+                  <a
+                    href="https://search.google.com/search-console"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    search.google.com/search-console
+                  </a>
+                </li>
+                <li>Add your property URL</li>
+                <li>Verify ownership via HTML tag or DNS</li>
+                <li>
+                  Submit your sitemap:{" "}
+                  <code className="bg-blue-100 px-1 rounded">
+                    https://bharatsciencemodel.in/sitemap.xml
+                  </code>
+                </li>
+              </ol>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-1">Google Analytics 4</h4>
+              <ol className="list-decimal ml-4 space-y-1">
+                <li>
+                  Go to{" "}
+                  <a
+                    href="https://analytics.google.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    analytics.google.com
+                  </a>
+                </li>
+                <li>Create a GA4 property for your website</li>
+                <li>Copy your Measurement ID (format: G-XXXXXXXXXX)</li>
+                <li>
+                  Add the GA4 script to your website's index.html head section
+                </li>
+              </ol>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-1">Backlink Strategy</h4>
+              <ul className="list-disc ml-4 space-y-1">
+                <li>
+                  Register on JustDial, IndiaMart, TradeIndia with your business
+                  details
+                </li>
+                <li>
+                  List on Google My Business with photos and product categories
+                </li>
+                <li>Get listed in school supplier directories across India</li>
+                <li>
+                  Share product catalogues on educational forums and WhatsApp
+                  groups
+                </li>
+                <li>Request reviews from schools you've supplied to</li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

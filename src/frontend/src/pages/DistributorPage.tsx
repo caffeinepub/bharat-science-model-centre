@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useSEO } from "@/hooks/useSEO";
 import { Link } from "@tanstack/react-router";
 import {
   Award,
@@ -73,6 +74,12 @@ const STEPS = [
 ];
 
 export default function DistributorPage() {
+  useSEO({
+    title:
+      "Become a Distributor | Bharat Science Model Centre | Educational Supplies India",
+    description:
+      "Join BSMC as a distributor of science lab equipment, educational supplies, and school products across India. Excellent margins, 7800+ products, 30+ years of trust.",
+  });
   return (
     <div className="min-h-screen bg-background">
       {/* Hero */}

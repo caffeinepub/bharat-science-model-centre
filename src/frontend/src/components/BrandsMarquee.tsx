@@ -54,7 +54,7 @@ export default function BrandsMarquee() {
             >
               <img
                 src={brand.src}
-                alt={brand.name}
+                alt={`${brand.name} laboratory supplies brand India`}
                 style={{
                   height: 56,
                   width: "auto",

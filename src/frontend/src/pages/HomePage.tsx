@@ -1,5 +1,6 @@
 import BrandsMarquee from "@/components/BrandsMarquee";
 import { Button } from "@/components/ui/button";
+import { useSEO } from "@/hooks/useSEO";
 import { Link } from "@tanstack/react-router";
 import {
   Atom,
@@ -299,6 +300,21 @@ const HERO_IMAGES = [
   "/assets/generated/cat-electrical-eng-realistic.dim_400x300.jpg",
 ];
 
+const HERO_IMAGE_ALTS = [
+  "Biology lab equipment India",
+  "Chemistry lab glassware supplier India",
+  "Physics lab instruments for schools",
+  "Microscope and telescope for schools India",
+  "Laboratory glassware manufacturer India",
+  "Electronics and robotics kits for schools",
+  "Human anatomy models for schools India",
+  "Laboratory reagents and chemicals India",
+  "Analytical lab equipment India",
+  "Pharma lab equipment India",
+  "School lab package India",
+  "Engineering lab instruments India",
+];
+
 const FEATURES = [
   {
     icon: BadgeCheck,
@@ -535,6 +551,12 @@ function CategoryButton({ cat, i }: { cat: Category; i: number }) {
 }
 
 export default function HomePage() {
+  useSEO({
+    title:
+      "Bharat Science Model Centre | Lab Equipment & Educational Supplies Supplier | Gurugram, India",
+    description:
+      "BSMC — India's trusted supplier of science lab equipment, chemistry glassware, physics instruments, biology supplies, STEM kits & school lab packages. 840+ schools served since 1993. Gurugram, Haryana.",
+  });
   useEffect(() => {
     const el = document.getElementById("bsmc-promise");
     if (el) {
@@ -587,7 +609,7 @@ export default function HomePage() {
               <div className="bg-white rounded-xl p-1 inline-flex shadow-xl">
                 <img
                   src="/assets/generated/bsmc-logo-transparent.dim_400x400.png"
-                  alt="Bharat Science Model Centre Logo"
+                  alt="Bharat Science Model Centre Logo - Lab Equipment Supplier Gurugram"
                   className="w-10 h-10 md:w-12 md:h-12 object-contain"
                 />
               </div>
@@ -600,9 +622,9 @@ export default function HomePage() {
               className="w-full"
             >
               <h1 className="text-xl md:text-2xl font-bold text-white leading-tight">
-                Complete Educational &amp;{" "}
+                Science Lab Equipment &amp; Educational Supplies{" "}
                 <span style={{ color: "rgba(28,202,196,0.95)" }}>
-                  Laboratory Solutions
+                  Gurugram, Haryana — Serving India Since 1993
                 </span>
               </h1>
             </motion.div>
@@ -639,7 +661,10 @@ export default function HomePage() {
             >
               <img
                 src={src}
-                alt=""
+                alt={
+                  HERO_IMAGE_ALTS[HERO_IMAGES.indexOf(src)] ||
+                  "Science lab equipment India"
+                }
                 className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
               />
             </div>
@@ -701,7 +726,8 @@ export default function HomePage() {
               <Star className="w-4 h-4 text-amber-400 fill-amber-400" />
             </div>
             <h2 className="text-2xl md:text-3xl font-bold text-white">
-              Why Thousands of Schools Trust Us
+              Affordable Lab Equipment &amp; School Supplies — Bulk Orders
+              Welcome
             </h2>
           </div>
 
@@ -796,7 +822,8 @@ export default function HomePage() {
               Our Products
             </h2>
             <p className="text-sm text-muted-text mt-1">
-              Browse our complete range of science education categories
+              Buy lab equipment, chemistry glassware, biology instruments, STEM
+              kits &amp; school educational supplies online — all in one place.
             </p>
           </div>
 
@@ -817,7 +844,7 @@ export default function HomePage() {
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
                     src={cat.img}
-                    alt={cat.name}
+                    alt={`${cat.name} - Educational Supplies India`}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
                 </div>
@@ -873,7 +900,7 @@ export default function HomePage() {
                 <div className="w-full h-20 flex items-center justify-center mb-4 overflow-hidden rounded-lg bg-gray-50">
                   <img
                     src={brand.logo}
-                    alt={`${brand.name} logo`}
+                    alt={`${brand.name} laboratory chemicals and equipment catalogue India`}
                     className="max-h-16 max-w-full object-contain group-hover:scale-105 transition-transform duration-200"
                   />
                 </div>
@@ -898,7 +925,7 @@ export default function HomePage() {
               Our Strengths
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-white">
-              Why Choose BSMC?
+              Why Schools Across India Choose BSMC for Lab Equipment
             </h2>
           </div>
           {/* 2×2 on mobile, 4 across on md+ */}
@@ -919,6 +946,26 @@ export default function HomePage() {
                 </p>
               </div>
             ))}
+          </div>
+          <div className="text-center mt-6">
+            <p className="text-sm text-white/60">
+              Explore our{" "}
+              <Link
+                to="/school-lab-package"
+                className="text-teal hover:underline"
+              >
+                school lab packages
+              </Link>
+              {", "}
+              <Link to="/enquiry" className="text-teal hover:underline">
+                request a bulk quote
+              </Link>
+              {", or "}
+              <Link to="/about" className="text-teal hover:underline">
+                learn about BSMC
+              </Link>
+              .
+            </p>
           </div>
         </div>
       </section>
@@ -1080,6 +1127,16 @@ export default function HomePage() {
               </p>
             </div>
           </div>
+        </div>
+        <div className="text-center mt-6">
+          <p className="text-xs text-muted-text max-w-2xl mx-auto">
+            Bharat Science Model Centre serves schools, colleges, universities,
+            and research institutions across{" "}
+            <strong>Gurugram, Delhi NCR, Haryana</strong>, and all over India.
+            We supply biology lab equipment, chemistry glassware, physics
+            instruments, STEM kits, and complete school laboratory packages —
+            with same-day dispatch and pan-India delivery.
+          </p>
         </div>
       </section>
     </div>

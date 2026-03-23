@@ -10,6 +10,7 @@ import {
   useUploadCatalogue,
 } from "@/hooks/useQueries";
 import { useIsAdmin } from "@/hooks/useQueries";
+import { useSEO } from "@/hooks/useSEO";
 import { Download, FileText, Loader2, Trash2, Upload } from "lucide-react";
 import { useRef, useState } from "react";
 import { toast } from "sonner";
@@ -23,6 +24,12 @@ function formatDate(ns: bigint) {
 }
 
 export default function CataloguePage() {
+  useSEO({
+    title:
+      "Product Catalogues | Science Lab Equipment & Educational Supplies | BSMC",
+    description:
+      "Download BSMC product catalogues for science lab equipment, chemistry glassware, biology instruments, physics apparatus, STEM kits, and school educational supplies.",
+  });
   const { identity } = useInternetIdentity();
   const { data: isAdmin } = useIsAdmin();
   const { data: catalogues, isLoading } = useListCatalogues();

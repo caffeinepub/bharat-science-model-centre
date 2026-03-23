@@ -1,3 +1,4 @@
+import { useSEO } from "@/hooks/useSEO";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Image } from "lucide-react";
 import { motion } from "motion/react";
@@ -31,6 +32,12 @@ const SUBCATEGORIES = [
 ];
 
 export default function PortraitsPage() {
+  useSEO({
+    title:
+      "Educational Portraits | Scientists, Mathematicians, Writers | BSMC India",
+    description:
+      "Framed portraits of great scientists, mathematicians, great writers, psychologists, and computer science pioneers for schools and laboratories. BSMC Gurugram India.",
+  });
   return (
     <div className="min-h-screen bg-section-alt">
       {/* Page Header */}

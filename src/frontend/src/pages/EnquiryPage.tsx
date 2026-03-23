@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useSEO } from "@/hooks/useSEO";
 import { CheckCircle, FlaskConical, Loader2, Send } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -39,6 +40,12 @@ function sendWhatsAppEnquiry({
 }
 
 export default function EnquiryPage() {
+  useSEO({
+    title:
+      "Send Enquiry | Buy Lab Equipment & Educational Supplies | BSMC Gurugram",
+    description:
+      "Request a quote for science lab equipment, chemistry glassware, biology instruments, STEM kits, school stationery, and bulk educational supplies. Fast response from BSMC Gurugram.",
+  });
   const [form, setForm] = useState({
     name: "",
     email: "",

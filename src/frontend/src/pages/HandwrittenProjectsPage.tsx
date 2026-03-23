@@ -1,3 +1,4 @@
+import { useSEO } from "@/hooks/useSEO";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
@@ -71,6 +72,12 @@ const PROJECTS = [
 ];
 
 export default function HandwrittenProjectsPage() {
+  useSEO({
+    title:
+      "Handwritten School Projects | Accountancy, Science, History & More | BSMC India",
+    description:
+      "Neatly handwritten school project files for Accountancy, Economics, History, Political Science, Psychology, Hindi, English, Fine Arts, and more. BSMC supplier India.",
+  });
   return (
     <div className="min-h-screen bg-section-alt">
       <div className="bg-navy text-white py-12">
@@ -109,7 +116,7 @@ export default function HandwrittenProjectsPage() {
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={project.img}
-                  alt={project.name}
+                  alt={`${project.name} - Handwritten project file for schools India`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

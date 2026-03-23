@@ -1,3 +1,4 @@
+import { useSEO } from "@/hooks/useSEO";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, ShieldCheck } from "lucide-react";
 import { motion } from "motion/react";
@@ -31,6 +32,12 @@ const SUBCATEGORIES = [
 ];
 
 export default function SafetyEquipmentPage() {
+  useSEO({
+    title:
+      "Lab Safety Equipment | Gloves, Goggles, Face Masks, Lab Coats | BSMC India",
+    description:
+      "Safety equipment for laboratories — gloves, face masks, safety goggles, hand sanitisers, and lab coats. Wholesale supplier for schools and colleges. BSMC Gurugram, India.",
+  });
   return (
     <div className="min-h-screen bg-section-alt">
       {/* Page Header */}

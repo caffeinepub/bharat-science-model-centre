@@ -1,3 +1,4 @@
+import { useSEO } from "@/hooks/useSEO";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
@@ -56,6 +57,12 @@ const PRACTICAL_FILES = [
 ];
 
 export default function HandwrittenPracticalFilesPage() {
+  useSEO({
+    title:
+      "Handwritten Practical Files | Physics, Chemistry, Biology Lab Files | BSMC India",
+    description:
+      "Complete handwritten practical files for Physics, Chemistry, Biology, Computer Science, Geography, Psychology, Physical Education, Fine Arts. BSMC India.",
+  });
   return (
     <div className="min-h-screen bg-section-alt">
       <div className="bg-navy text-white py-12">
@@ -95,7 +102,7 @@ export default function HandwrittenPracticalFilesPage() {
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={file.img}
-                  alt={file.name}
+                  alt={`${file.name} - Handwritten practical file India`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

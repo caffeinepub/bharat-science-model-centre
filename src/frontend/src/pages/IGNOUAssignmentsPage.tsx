@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useSEO } from "@/hooks/useSEO";
 import { Link } from "@tanstack/react-router";
 import {
   BookOpen,
@@ -83,6 +84,12 @@ const PILL_TABS = [
 ];
 
 export default function IGNOUAssignmentsPage() {
+  useSEO({
+    title:
+      "IGNOU Assignments, Synopsis, Projects & Practicals | All Subjects | BSMC India",
+    description:
+      "Handwritten IGNOU Assignments, Synopsis, Projects and Practicals for all programmes. All subjects, all mediums, session-wise. Order from BSMC Gurugram India.",
+  });
   return (
     <div className="min-h-screen bg-section-alt">
       {/* Page Header */}

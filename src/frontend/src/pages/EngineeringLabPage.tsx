@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useSEO } from "@/hooks/useSEO";
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "motion/react";
@@ -22,6 +23,12 @@ const SUBCATEGORIES = [
 ];
 
 export default function EngineeringLabPage() {
+  useSEO({
+    title:
+      "Engineering Lab Equipment | Electrical, Civil & Mechanical Instruments | BSMC India",
+    description:
+      "Engineering lab instruments for colleges — Electrical Engineering Equipment, Civil & Surveying Instruments, Mechanical Engineering tools. Supplier in India — BSMC Gurugram.",
+  });
   return (
     <div className="min-h-screen bg-section-alt">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
@@ -61,7 +68,7 @@ export default function EngineeringLabPage() {
               <div className="aspect-[4/3] overflow-hidden">
                 <img
                   src={sub.img}
-                  alt={sub.name}
+                  alt={`${sub.name} engineering lab equipment for colleges India`}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

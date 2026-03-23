@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { useSEO } from "@/hooks/useSEO";
 import { Link, useNavigate } from "@tanstack/react-router";
 import {
   Building2,
@@ -37,6 +38,12 @@ const ABOUT_HIGHLIGHTS = [
 ];
 
 export default function AboutPage() {
+  useSEO({
+    title:
+      "About Bharat Science Model Centre | Lab Equipment Supplier Since 1993 | Gurugram",
+    description:
+      "Learn about BSMC — India's trusted educational supplies and science lab equipment supplier since 1993. Serving 840+ schools and institutions across India from Gurugram, Haryana.",
+  });
   const navigate = useNavigate();
 
   return (
@@ -63,7 +70,8 @@ export default function AboutPage() {
               Our Story
             </p>
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-              About Us
+              About Bharat Science Model Centre — Educational Supplies &amp; Lab
+              Equipment Supplier, Gurugram
             </h1>
             <p className="text-white/70 text-base md:text-lg max-w-xl mx-auto">
               Learn about our story, team, and purpose.

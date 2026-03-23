@@ -189,9 +189,11 @@ export default function Footer() {
             Built with ❤️ using caffeine.ai
           </a>
         </div>
+        <p className="text-xs text-white/40 text-center mt-2">
+          India's trusted educational supplies &amp; science lab equipment
+          supplier — Gurugram, Haryana since 1993.
+        </p>
       </div>
-
-      {/* Mobile: compact single-row footer */}
       <div className="sm:hidden px-4 py-4">
         <div className="flex items-center justify-between mb-3">
           {/* Brand mark */}
