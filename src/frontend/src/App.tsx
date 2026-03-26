@@ -2,7 +2,10 @@ import RootLayout from "@/components/RootLayout";
 import { Toaster } from "@/components/ui/sonner";
 import AboutPage from "@/pages/AboutPage";
 import AdminPage from "@/pages/AdminPage";
+import BlogPage from "@/pages/BlogPage";
+import BlogPostPage from "@/pages/BlogPostPage";
 import CataloguePage from "@/pages/CataloguePage";
+import DissertationThesisPage from "@/pages/DissertationThesisPage";
 import DistributorPage from "@/pages/DistributorPage";
 import EngineeringLabPage from "@/pages/EngineeringLabPage";
 import EnquiryPage from "@/pages/EnquiryPage";
@@ -106,10 +109,28 @@ const handwrittenPracticalFilesRoute = createRoute({
   component: HandwrittenPracticalFilesPage,
 });
 
+const dissertationThesisRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/dissertation-thesis",
+  component: DissertationThesisPage,
+});
+
 const ignoRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/ignou-assignments",
   component: IGNOUAssignmentsPage,
+});
+
+const blogRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/blog",
+  component: BlogPage,
+});
+
+const blogPostRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/blog/$slug",
+  component: BlogPostPage,
 });
 
 const routeTree = rootRoute.addChildren([
@@ -127,6 +148,9 @@ const routeTree = rootRoute.addChildren([
   handwrittenProjectsRoute,
   handwrittenPracticalFilesRoute,
   ignoRoute,
+  dissertationThesisRoute,
+  blogRoute,
+  blogPostRoute,
 ]);
 
 const router = createRouter({ routeTree });

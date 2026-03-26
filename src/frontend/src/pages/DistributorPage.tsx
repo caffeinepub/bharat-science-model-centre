@@ -75,10 +75,10 @@ const STEPS = [
 
 export default function DistributorPage() {
   useSEO({
-    title:
-      "Become a Distributor | Bharat Science Model Centre | Educational Supplies India",
+    title: "Become a Distributor | Bharat Science Model Centre Lab Equipment",
     description:
-      "Join BSMC as a distributor of science lab equipment, educational supplies, and school products across India. Excellent margins, 7800+ products, 30+ years of trust.",
+      "Join BSMC's distributor network for science lab equipment in India. High margins, 7800+ products, and 30+ years brand trust. Apply today.",
+    canonical: "https://bharatsciencemodel.in/distributor",
   });
   return (
     <div className="min-h-screen bg-background">

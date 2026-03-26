@@ -1,49 +1,39 @@
-# Bharat Science Model Centre — SEO Optimization
+# Bharat Science Model Centre — SEO Deep Optimization (Version 44)
 
 ## Current State
-- index.html has an empty `<title>` tag and no meta description, Open Graph, or schema markup
-- Images lack descriptive alt text with keywords
-- H1/H2/H3 headings exist but lack targeted keyword-rich content for India/Gurgaon SEO
-- No sitemap.xml or robots.txt in public/
-- No JSON-LD structured data (LocalBusiness, Organization)
-- No canonical URLs or Open Graph tags
-- No Google Analytics or Search Console integration guidance
-- Internal linking between pages is minimal
-- Location-based SEO (Gurgaon, Haryana, India) is present in contact only, not in headings/meta
+- Site has foundational SEO: meta tags, OG/Twitter, LocalBusiness+Organization schema in index.html, robots.txt, sitemap.xml, useSEO hook with canonical + per-page schema, 3 blog posts, location SEO, internal links.
+- sitemap.xml dates are stuck at 2024-03-05 (stale)
+- Blog has 3 posts but NOT the 3 specifically requested: 'CBSE Lab Equipment List Class 12', 'Best Microscope for School Students', 'Complete Physics Lab Setup Guide'
+- Homepage has NO dedicated 800-1000 word SEO content section (H1/H2/H3 structured)
+- No Google Search Console verification meta tag
+- No product-level schema for key categories
+- 'Bharat EduMart' initiative is not mentioned anywhere on the site
+- FAQ schema on homepage exists but can be improved
 
 ## Requested Changes (Diff)
 
 ### Add
-- SEO-optimized `<title>`, `<meta name="description">`, Open Graph, Twitter Card, and canonical tags in index.html
-- JSON-LD structured data blocks: LocalBusiness, Organization schemas in index.html
-- `public/sitemap.xml` listing all pages with URLs and priorities
-- `public/robots.txt` allowing all crawlers and pointing to sitemap
-- Google Analytics / Google Search Console setup guidance as a visible banner or note in Admin page
-- Keywords integrated naturally across: HomePage H1/H2/H3 headings, category descriptions, section sub-headings, About page, Distributor page, Enquiry page
-- Location-based SEO text (Gurugram, Haryana, India) in hero H1, categories section subtitle, footer, and contact section
-- Alt text with descriptive keywords on all `<img>` tags across all pages and components
-- "breadcrumb" style keyword-rich page titles for subpages (useEffect to set document.title per route)
+- Google Search Console verification meta tag placeholder in index.html (with comment instructions)
+- 3 new blog posts with full 600-800 word content:
+  1. 'CBSE Lab Equipment List for Class 12 Science Students' (slug: cbse-lab-equipment-list-class-12)
+  2. 'Best Microscope for School Students in India 2024' (slug: best-microscope-for-school-students)
+  3. 'Complete Physics Lab Setup Guide for Schools' (slug: complete-physics-lab-setup-guide)
+- Homepage: 800-1000 word SEO content section with proper H1, H2, H3 headings, keywords naturally embedded, internal links to product pages, blog, and enquiry
+- ProductCollection schema in index.html for key lab equipment categories
+- Bharat EduMart mention in homepage and footer (online sales platform)
+- Sitemap: add 3 new blog URLs, update all dates to 2026-03-26
 
 ### Modify
-- index.html: populate `<title>` and add all head meta tags
-- HomePage: Update H1 to include keywords ("Lab Equipment & Educational Supplies | Gurugram, India"), update H2s with keyword-rich text, update section subtitles with location + category keywords, add descriptive alt text to all images
-- All category `<img>` tags: add keyword-rich alt text
-- AboutPage, DistributorPage, EnquiryPage, subpages: add `useEffect` to set `document.title` and `meta description` per page; add keyword-rich headings
-- Footer: add brief keyword-rich tagline mentioning Gurugram, Haryana
-- BrandsMarquee: add alt text to brand logos
-- All subcategory pages (PrintedChartsPage, SafetyEquipmentPage, PortraitsPage, HandwrittenProjectsPage, HandwrittenPracticalFilesPage, IGNOUAssignmentsPage, SchoolLabPackagePage, EngineeringLabPage): add document.title, keyword-rich H1, and image alt text
+- Existing 3 blog posts: add 'CBSE Lab Equipment List Class 12' / 'Best Microscope for School Students' / 'Complete Physics Lab Setup Guide' TITLES to improve exact-match keyword targeting
+- index.html: add Google Search Console meta placeholder, add BreadcrumbList schema for category pages
+- robots.txt: add Crawl-delay hint and sitemap reference (already exists, verify)
 
 ### Remove
-- Empty `<title></title>` in index.html (replaced with proper title)
+- Nothing
 
 ## Implementation Plan
-1. Update `src/frontend/index.html`: add meta title, description, keywords, Open Graph, Twitter Card, canonical, JSON-LD LocalBusiness + Organization schema, preconnect hints
-2. Create `src/frontend/public/sitemap.xml` with all 14 routes
-3. Create `src/frontend/public/robots.txt`
-4. Update `src/frontend/src/pages/HomePage.tsx`: keyword-rich H1 (location + product focus), update H2 section headings, add alt text to all images, add location mentions in subtitle text, add internal navigation links in content
-5. Create a `useSEO` hook (`src/frontend/src/hooks/useSEO.ts`) that sets document.title and meta description dynamically per page
-6. Apply `useSEO` in all pages with page-specific titles/descriptions from the top-20 keyword list
-7. Update `src/frontend/src/components/Footer.tsx`: add keyword-rich tagline, add structured NAP (Name, Address, Phone) markup
-8. Update `src/frontend/src/components/BrandsMarquee.tsx`: add alt text to all brand logos
-9. Update all subcategory pages with keyword-rich H1s and image alt text
-10. Add a Google Analytics/Search Console setup note in AdminPage
+1. Update blogPosts.ts: add 3 new full-content blog posts with keyword-rich content, proper structure, CTA links to /enquiry and category pages
+2. Update HomePage.tsx: add SEO Content Section (after contact, before footer) — 800-1000 words with H1/H2/H3, Bharat EduMart mention, keyword-dense content, internal links
+3. Update index.html: add Google Search Console placeholder meta, ProductCollection schema
+4. Update public/sitemap.xml: add new blog URLs, update all lastmod to 2026-03-26
+5. Validate and build

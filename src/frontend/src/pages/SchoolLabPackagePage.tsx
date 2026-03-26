@@ -38,10 +38,10 @@ const SUBCATEGORIES = [
 
 export default function SchoolLabPackagePage() {
   useSEO({
-    title:
-      "School Laboratory Package | Complete CBSE Lab Setup | BSMC Gurugram India",
+    title: "CBSE School Lab Packages | Complete Lab Setup | BSMC India",
     description:
-      "Complete turnkey CBSE-aligned school laboratory packages for Chemistry, Physics, Biology, Mathematics, and Geography labs. Equipment, chemicals, and furniture included. BSMC India.",
+      "Ready-to-use CBSE-aligned lab packages for Chemistry, Physics, Biology, Mathematics, and Composite science labs. Bulk pricing for schools across India.",
+    canonical: "https://bharatsciencemodel.in/school-lab-package",
   });
   return (
     <div className="min-h-screen bg-section-alt">

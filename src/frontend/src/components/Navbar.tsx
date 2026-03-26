@@ -13,6 +13,7 @@ const navLinks = [
   { label: "About Us", to: "/about" },
   { label: "Products", to: "/#categories" },
   { label: "Catalogue", to: null, external: CATALOGUE_URL },
+  { label: "Blog", to: "/blog" },
   { label: "Distributor", to: "/distributor" },
   { label: "Enquiry", to: "/enquiry" },
   { label: "Contact", to: "/#contact" },

@@ -73,6 +73,9 @@ type Category = {
   viewListUrl?: string;
   viewCatalogueUrl?: string;
   pictorialCatalogueUrl?: string;
+  viewCatalogue2Url?: string;
+  checklistUrl?: string;
+  dissertationUrl?: string;
   viewAllChartsUrl?: string;
   safetySubcategoriesUrl?: string;
   portraitsSubcategoriesUrl?: string;
@@ -96,6 +99,8 @@ const CATEGORIES: Category[] = [
     desc: "Complete range of chemistry apparatus, reagents, and lab consumables",
     viewListUrl:
       "https://drive.google.com/file/d/1cAl3VqH-_zuhwZPQM2z2_WebNyMBDmwR/view?usp=sharing",
+    pictorialCatalogueUrl:
+      "https://drive.google.com/file/d/15bVLhfHobhqtuWoY9zA3k7V9eHrW13em/view?usp=sharing",
   },
   {
     name: "Physics Lab Equipment",
@@ -108,6 +113,8 @@ const CATEGORIES: Category[] = [
     name: "Microscope, Telescope & Binoculars",
     img: "/assets/generated/microscope-telescope-binoculars.dim_600x400.jpg",
     desc: "Compound microscopes, telescopes, and binoculars for scientific observation and astronomy education",
+    viewCatalogueUrl:
+      "https://drive.google.com/file/d/1yfZcgx1Npc7K0Gu_N0iiteFyV5JQsLtw/view?usp=sharing",
   },
   {
     name: "Glassware",
@@ -138,6 +145,8 @@ const CATEGORIES: Category[] = [
       "https://drive.google.com/file/d/1g8ROCjNN7HNW-rP36pWARjItKq1hDsRM/view?usp=sharing",
     pictorialCatalogueUrl:
       "https://drive.google.com/file/d/1Qz0r49JOqDTbmfp9SPgilOSkOd4mNplt/view?usp=sharing",
+    viewCatalogue2Url:
+      "https://drive.google.com/file/d/16uOQ2fSEhsSg-5t05JFPLBsdMFuIa2qs/view?usp=sharing",
   },
   {
     name: "Human Anatomy Models",
@@ -177,6 +186,8 @@ const CATEGORIES: Category[] = [
     name: "Stationery",
     img: "/assets/generated/cat-stationery.dim_400x300.jpg",
     desc: "We provide stationery to schools, colleges, and institutions at wholesale price. For instant quotation, provide us with your requirement list.",
+    checklistUrl:
+      "https://drive.google.com/file/d/1Qx7a2b6r_RSp-kLbSU2OtX7A1a_rYhkz/view?usp=sharing",
   },
   {
     name: "Plasticware",
@@ -203,6 +214,8 @@ const CATEGORIES: Category[] = [
     name: "Model Making Material",
     img: "/assets/generated/cat-model-making.dim_400x300.jpg",
     desc: "Thermocol, cardboard, craft foam, paints, clay, and all materials for building science models",
+    viewCatalogueUrl:
+      "https://drive.google.com/file/d/1zYkJvdLOj0JeMz8i1_w6r9NKPmdvwRqQ/view?usp=sharing",
   },
   {
     name: "Handmade Models",
@@ -256,6 +269,8 @@ const CATEGORIES: Category[] = [
     name: "Analytical Lab Equipments",
     img: "/assets/generated/cat-analytical-lab-realistic.dim_400x300.jpg",
     desc: "Analytical balances, spectrophotometers, pH meters, and precision analytical instruments for research labs",
+    viewCatalogueUrl:
+      "https://drive.google.com/file/d/1s1NURmkx-ENXFvAeC8TMeLBT54UW39kA/view?usp=drive_link",
   },
   {
     name: "Engineering Lab Equipments",
@@ -267,11 +282,14 @@ const CATEGORIES: Category[] = [
     name: "Forensic Lab Equipments",
     img: "/assets/generated/cat-forensic-realistic.dim_400x300.jpg",
     desc: "Fingerprint kits, evidence collection tools, forensic light sources, and sample analysis equipment",
+    viewCatalogueUrl:
+      "https://drive.google.com/file/d/11Tme3EXuSB9n06gbdyrBY5LE7TSDM9HU/view?usp=sharing",
   },
   {
     name: "Dissertation / Thesis",
     img: "/assets/generated/cat-dissertation-thesis.dim_400x300.jpg",
     desc: "Dissertation and thesis writing assistance, project reports, and academic research materials for students",
+    dissertationUrl: "/dissertation-thesis",
   },
   {
     name: "M.Ed / B.Ed / D.El.Ed",
@@ -449,7 +467,33 @@ function CategoryButton({ cat, i }: { cat: Category; i: number }) {
     );
   }
 
-  // Mathematics: show both View Catalogue and Pictorial Catalogue
+  // Chemistry: show View List and Pictorial Catalogue
+  if (cat.name === "Chemistry Lab Equipment" && cat.pictorialCatalogueUrl) {
+    return (
+      <div className="flex flex-col gap-2">
+        <a
+          href={cat.viewListUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block text-xs font-semibold bg-teal text-white hover:bg-teal-hover transition-colors px-3 py-1.5 rounded-full text-center"
+          data-ocid={`categories.viewlist_button.${i + 1}`}
+        >
+          View List
+        </a>
+        <a
+          href={cat.pictorialCatalogueUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block text-xs font-semibold border border-teal text-teal hover:bg-teal hover:text-white transition-colors px-3 py-1.5 rounded-full text-center"
+          data-ocid={`categories.pictorial_catalogue_button.${i + 1}`}
+        >
+          Pictorial Catalogue
+        </a>
+      </div>
+    );
+  }
+
+  // Mathematics: show View Catalogue, Pictorial Catalogue, and View Catalogue 2
   if (cat.name === "Mathematic Lab Equipment" && cat.pictorialCatalogueUrl) {
     return (
       <div className="flex flex-col gap-2">
@@ -471,6 +515,17 @@ function CategoryButton({ cat, i }: { cat: Category; i: number }) {
         >
           Pictorial Catalogue
         </a>
+        {cat.viewCatalogue2Url && (
+          <a
+            href={cat.viewCatalogue2Url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block text-xs font-semibold border border-teal text-teal hover:bg-teal hover:text-white transition-colors px-3 py-1.5 rounded-full text-center"
+            data-ocid={`categories.catalogue2_button.${i + 1}`}
+          >
+            View Catalogue 2
+          </a>
+        )}
       </div>
     );
   }
@@ -513,7 +568,30 @@ function CategoryButton({ cat, i }: { cat: Category; i: number }) {
     );
   }
 
-  if (cat.viewListUrl) {
+  if (cat.checklistUrl) {
+    return (
+      <div className="flex flex-col gap-2">
+        <a
+          href={cat.checklistUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block text-xs font-semibold bg-teal text-white hover:bg-teal-hover transition-colors px-3 py-1.5 rounded-full text-center"
+          data-ocid={`categories.checklist_button.${i + 1}`}
+        >
+          View Checklist
+        </a>
+        <Link
+          to="/enquiry"
+          className="inline-block text-xs font-semibold border border-teal text-teal hover:bg-teal hover:text-white transition-colors px-3 py-1.5 rounded-full text-center"
+          data-ocid={`categories.enquiry_button.${i + 1}`}
+        >
+          Send Enquiry
+        </Link>
+      </div>
+    );
+  }
+
+  if (cat.viewListUrl && cat.name !== "Chemistry Lab Equipment") {
     return (
       <a
         href={cat.viewListUrl}
@@ -539,6 +617,18 @@ function CategoryButton({ cat, i }: { cat: Category; i: number }) {
     );
   }
 
+  if (cat.dissertationUrl) {
+    return (
+      <Link
+        to="/dissertation-thesis"
+        className="inline-block text-xs font-semibold border border-teal text-teal hover:bg-teal hover:text-white transition-colors px-3 py-1.5 rounded-full"
+        data-ocid="categories.dissertation.button"
+      >
+        View Sub-Categories →
+      </Link>
+    );
+  }
+
   return (
     <Link
       to="/enquiry"
@@ -556,6 +646,53 @@ export default function HomePage() {
       "Bharat Science Model Centre | Lab Equipment & Educational Supplies Supplier | Gurugram, India",
     description:
       "BSMC — India's trusted supplier of science lab equipment, chemistry glassware, physics instruments, biology supplies, STEM kits & school lab packages. 840+ schools served since 1993. Gurugram, Haryana.",
+    canonical: "https://bharatsciencemodel.in/",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What lab equipment does Bharat Science Model Centre supply?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "BSMC supplies a comprehensive range of science lab equipment including biology lab instruments, chemistry glassware and apparatus, physics experiment kits, STEM kits, microscopes, telescopes, safety equipment, anatomy models, and complete school lab packages for CBSE and state board schools across India.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does BSMC deliver lab equipment across India?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, Bharat Science Model Centre offers pan-India delivery of all science lab equipment and educational supplies. We serve schools and institutions in Delhi NCR, Haryana, and all Indian states with same-day dispatch from our Gurugram warehouse.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does BSMC offer CBSE-aligned school lab packages?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes, we offer complete CBSE-aligned lab packages for Chemistry, Physics, Biology, Mathematics, and Composite labs. These packages include all required instruments, chemicals, glassware, and models as per the CBSE curriculum for Classes 6-12.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How can I get a price quote for bulk lab equipment orders?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "You can request a customized price quote by calling us at +91 9999899973 or through our online enquiry form. We offer special wholesale pricing for bulk orders from schools, colleges, and government institutions.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What are BSMC's contact details and location?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Bharat Science Model Centre is located at 389/9 Shivpuri, Near Harish Bakery, Old Railway Road, Gurugram, Haryana 122001. Call us at +91 9999899973 (General Enquiry), +91 9810572634 (Mr. Vinod Kumar), or +91 9999799935 (Jatin Pahuja). We are open Monday to Saturday, 9 AM to 7 PM.",
+          },
+        },
+      ],
+    },
   });
   useEffect(() => {
     const el = document.getElementById("bsmc-promise");
@@ -917,6 +1054,139 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* SEO Content Section */}
+      <section className="py-10 md:py-14 bg-section-alt" id="about-bsmc">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">
+            India&apos;s Trusted School Lab Equipment Supplier Since 1993
+          </h2>
+          <p className="text-muted-text leading-relaxed mb-8 text-center max-w-3xl mx-auto">
+            Bharat Science Model Centre (BSMC), established in 1993 in Gurugram,
+            Haryana, has been a trusted partner for schools, colleges, and
+            educational institutions across India. With over{" "}
+            <strong>7,800+ products</strong> and{" "}
+            <strong>840+ schools served</strong>, BSMC delivers comprehensive
+            educational and laboratory solutions — from complete CBSE lab setups
+            to individual scientific instruments — with same-day dispatch and
+            pan-India delivery.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div>
+              <h3 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+                <span className="w-1.5 h-5 bg-teal rounded-full inline-block" />
+                Complete Range of Science Lab Equipment
+              </h3>
+              <p className="text-sm text-muted-text leading-relaxed">
+                BSMC supplies a comprehensive range of{" "}
+                <strong>biology lab equipment</strong> including microscopes,
+                prepared slides, specimens, and anatomy models;{" "}
+                <strong>chemistry lab apparatus</strong> such as glassware,
+                beakers, test tubes, burners, and chemical reagents;{" "}
+                <strong>physics instruments</strong> covering optics kits,
+                electricity boards, and mechanics apparatus; plus STEM kits,
+                educational models, and safety equipment for every science
+                department.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+                <span className="w-1.5 h-5 bg-teal rounded-full inline-block" />
+                School Lab Packages for CBSE &amp; State Board Schools
+              </h3>
+              <p className="text-sm text-muted-text leading-relaxed">
+                Our complete, ready-to-use{" "}
+                <strong>
+                  lab packages for Chemistry, Physics, Biology, Mathematics, and
+                  Composite science
+                </strong>{" "}
+                are fully aligned with CBSE curriculum requirements for Classes
+                6–12. Each package includes all required instruments, glassware,
+                chemicals, and models. Special wholesale pricing is available
+                for bulk orders from government schools, private institutions,
+                and educational boards.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+                <span className="w-1.5 h-5 bg-teal rounded-full inline-block" />
+                Microscopes, Telescopes &amp; Scientific Instruments
+              </h3>
+              <p className="text-sm text-muted-text leading-relaxed">
+                Browse our extensive range of{" "}
+                <strong>
+                  compound microscopes, stereo microscopes, and digital
+                  microscopes
+                </strong>{" "}
+                for school observation labs — from 40x entry-level models to
+                1000x advanced binocular microscopes. We also supply telescopes,
+                binoculars, and precision scientific instruments for school
+                astronomy and geography labs across India.
+              </p>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold text-foreground mb-3 flex items-center gap-2">
+                <span className="w-1.5 h-5 bg-teal rounded-full inline-block" />
+                Serving Gurugram, Delhi NCR &amp; Pan India
+              </h3>
+              <p className="text-sm text-muted-text leading-relaxed">
+                Located in <strong>Shivpuri, Gurugram, Haryana</strong>, BSMC
+                provides school lab equipment to institutions in{" "}
+                <strong>
+                  Gurgaon, Delhi NCR, Faridabad, Noida, and across all Indian
+                  states
+                </strong>
+                . Search &quot;school lab equipment near me&quot; in Gurugram or
+                Haryana — we are your local supplier with same-day dispatch and
+                24/7 customer support for urgent laboratory requirements.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl border border-card-border p-6">
+            <h3 className="text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+              <span className="w-1.5 h-5 bg-teal rounded-full inline-block" />
+              Why Schools Choose BSMC for Lab Equipment
+            </h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                "30+ years of experience supplying school lab equipment across India",
+                "CBSE-aligned products reviewed against the latest practical curriculum",
+                "Competitive wholesale pricing for schools, colleges, and institutions",
+                "Same-day dispatch from Gurugram warehouse with pan-India delivery",
+                "840+ schools and institutions have trusted BSMC since 1993",
+                "Expert consultation for complete lab setup and equipment selection",
+              ].map((point) => (
+                <li
+                  key={point}
+                  className="flex items-start gap-2 text-sm text-muted-text"
+                >
+                  <span className="w-5 h-5 rounded-full bg-teal/10 text-teal flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold">
+                    ✓
+                  </span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <p className="text-sm text-muted-text mt-5 pt-5 border-t border-card-border">
+              Contact us today at <strong>+91 9999899973</strong> or{" "}
+              <Link
+                to="/enquiry"
+                className="text-teal hover:text-teal-hover font-medium underline"
+                data-ocid="seo_section.link"
+              >
+                send an enquiry
+              </Link>{" "}
+              to get a customized quote for your school&apos;s laboratory
+              requirements.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Why choose us */}
       <section className="py-6 md:py-10 bg-navy">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -1137,6 +1407,226 @@ export default function HomePage() {
             instruments, STEM kits, and complete school laboratory packages —
             with same-day dispatch and pan-India delivery.
           </p>
+        </div>
+      </section>
+
+      {/* Deep SEO Content Section */}
+      <section id="about-bsmc-full" className="py-10 md:py-16 bg-background">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-5">
+            Bharat Science Model Centre — School Lab Equipment Supplier in India
+          </h2>
+          <p className="text-muted-text leading-relaxed mb-7">
+            Founded in 1993 in Gurugram, Haryana,{" "}
+            <strong>Bharat Science Model Centre (BSMC)</strong> is one of
+            India&apos;s most trusted suppliers of school lab equipment and
+            educational supplies. Over three decades, we have served{" "}
+            <strong>840+ schools, colleges, and institutions</strong> across
+            India — supplying <strong>7,800+ products</strong> covering science
+            lab apparatus, chemistry glassware, physics instruments, biology lab
+            items, STEM kits, and comprehensive school educational solutions.
+            From individual instruments to complete lab setups, BSMC is the
+            preferred partner for science education in India.
+          </p>
+
+          <h3 className="text-xl font-bold text-foreground mb-3">
+            Science Lab Equipment for CBSE Schools
+          </h3>
+          <p className="text-muted-text leading-relaxed mb-6">
+            BSMC supplies a complete range of{" "}
+            <strong>Physics, Chemistry, and Biology lab apparatus</strong> fully
+            aligned with NCERT curriculum requirements for Classes 6 to 12.
+            Whether your school needs equipment for Class 9 practicals or a
+            fully outfitted senior secondary science lab, our CBSE-compliant
+            inventory covers everything. Through our <em>Bharat EduMart</em>{" "}
+            online platform, schools and institutions across India can
+            conveniently order science lab equipment with same-day dispatch from
+            Gurugram. Explore our ready-to-order{" "}
+            <a
+              href="/school-lab-package"
+              className="text-teal hover:underline font-medium"
+            >
+              school lab packages
+            </a>{" "}
+            designed for Chemistry, Physics, Biology, Mathematics, and Composite
+            science labs.
+          </p>
+
+          <h3 className="text-xl font-bold text-foreground mb-3">
+            Physics Lab Equipment
+          </h3>
+          <p className="text-muted-text leading-relaxed mb-6">
+            Our physics lab instruments range covers{" "}
+            <strong>
+              vernier calipers, screw gauges, optical benches, convex and
+              concave lenses, galvanometers, ammeters, voltmeters, rheostats,
+              sonometers
+            </strong>
+            , and complete electricity and mechanics lab setups. BSMC stocks
+            instruments for every topic in the CBSE Class 9–12 physics
+            curriculum — from simple pendulum experiments to semiconductor
+            devices. Schools looking to buy{" "}
+            <strong>physics apparatus India</strong>-wide choose BSMC for
+            reliable quality and competitive wholesale pricing.{" "}
+            <a
+              href="/enquiry"
+              className="text-teal hover:underline font-medium"
+            >
+              Send an enquiry
+            </a>{" "}
+            for a detailed physics lab quotation.
+          </p>
+
+          <h3 className="text-xl font-bold text-foreground mb-3">
+            Chemistry Lab Equipment
+          </h3>
+          <p className="text-muted-text leading-relaxed mb-6">
+            BSMC is a trusted{" "}
+            <strong>chemistry lab glassware supplier in India</strong>, stocking
+            Borosil glassware, beakers, conical flasks, burettes, pipettes,
+            measuring cylinders, and complete titration and electrolysis setups.
+            We source chemical reagents from reputed brands including CDH,
+            ensuring quality and safety. Our chemistry apparatus range covers
+            all CBSE practical requirements — from basic Class 9 experiments to
+            advanced Class 12 qualitative analysis. All glassware is
+            heat-resistant borosilicate, and safety equipment (goggles, lab
+            coats, gloves) is available alongside chemistry instruments.{" "}
+            <a
+              href="/enquiry"
+              className="text-teal hover:underline font-medium"
+            >
+              Get a chemistry lab quote
+            </a>{" "}
+            for your school.
+          </p>
+
+          <h3 className="text-xl font-bold text-foreground mb-3">
+            Biology Lab Equipment &amp; Microscopes
+          </h3>
+          <p className="text-muted-text leading-relaxed mb-6">
+            Biology labs need more than microscopes — they need prepared slides,
+            anatomy models, dissection kits, specimens, and printed charts. BSMC
+            stocks{" "}
+            <strong>
+              compound microscopes (monocular and binocular), stereo microscopes
+            </strong>
+            , prepared slide sets, human anatomy models, biology charts, and
+            dissection instruments. Students looking to{" "}
+            <strong>buy school microscopes in India</strong> and institutions
+            seeking <strong>biology lab equipment suppliers</strong> rely on
+            BSMC for quality instruments at wholesale prices. Our microscope
+            range covers all CBSE Class 10 and 12 biology practical
+            requirements.{" "}
+            <a
+              href="/enquiry"
+              className="text-teal hover:underline font-medium"
+            >
+              Enquire about microscopes
+            </a>
+            .
+          </p>
+
+          <h3 className="text-xl font-bold text-foreground mb-3">
+            Why Schools Choose BSMC
+          </h3>
+          <ul className="text-muted-text leading-relaxed mb-6 space-y-2 list-none">
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" />
+              <span>
+                <strong>Established 1993</strong> — 30+ years of trusted service
+                to Indian schools and institutions
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" />
+              <span>
+                <strong>840+ schools served</strong> across India — from
+                government primary schools to prestigious private institutions
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" />
+              <span>
+                <strong>7,800+ products</strong> — one of the widest ranges of
+                school and lab supplies available from a single supplier
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" />
+              <span>
+                <strong>All India delivery</strong> — we ship to every state and
+                union territory with fast, reliable courier services
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" />
+              <span>
+                <strong>Same-day dispatch</strong> from our Gurugram warehouse
+                for orders confirmed before noon
+              </span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-teal mt-2 shrink-0" />
+              <span>
+                <strong>Bharat EduMart online platform</strong> — order science
+                lab equipment and educational supplies online with ease
+              </span>
+            </li>
+          </ul>
+
+          <h3 className="text-xl font-bold text-foreground mb-3">
+            Lab Equipment Supplier in Gurgaon &amp; Across India
+          </h3>
+          <p className="text-muted-text leading-relaxed mb-6">
+            As a leading <strong>lab equipment supplier in Gurgaon</strong>{" "}
+            (Gurugram), BSMC is conveniently located at 389/9 Shivpuri,
+            Gurugram, Haryana — 122001. Schools in Gurugram,{" "}
+            <strong>Delhi</strong>, Faridabad, Noida, and the wider{" "}
+            <strong>NCR region</strong> benefit from same-day or next-day
+            delivery. Beyond NCR, we serve schools in Chandigarh, Jaipur, Agra,
+            Lucknow, Patna, Bhopal, and all other major cities across India. If
+            you are searching for a <strong>science shop near me</strong> in
+            Haryana or a reliable{" "}
+            <strong>school supplies supplier in Haryana</strong>, BSMC is your
+            answer — with 30+ years of unmatched experience in educational lab
+            supplies.
+          </p>
+
+          <h3 className="text-xl font-bold text-foreground mb-3">
+            Explore Our Blog for Science Education Resources
+          </h3>
+          <p className="text-muted-text leading-relaxed mb-8">
+            Our{" "}
+            <a href="/blog" className="text-teal hover:underline font-medium">
+              science lab equipment blog
+            </a>{" "}
+            is a free resource for teachers, school administrators, and
+            students. Read our in-depth guides including{" "}
+            <em>CBSE Lab Equipment List for Class 12</em>,{" "}
+            <em>Best Microscope for School Students in India</em>, and{" "}
+            <em>Complete Physics Lab Setup Guide</em> — all packed with
+            practical advice to help Indian schools build better science
+            laboratories.
+          </p>
+
+          <div className="flex gap-4 flex-wrap">
+            <a href="/enquiry" data-ocid="home.seo_enquiry_button">
+              <button
+                type="button"
+                className="px-6 py-2.5 rounded-full bg-teal text-white font-semibold text-sm hover:bg-teal/90 transition-colors"
+              >
+                Send Enquiry
+              </button>
+            </a>
+            <a href="/blog" data-ocid="home.seo_blog_button">
+              <button
+                type="button"
+                className="px-6 py-2.5 rounded-full border border-teal text-teal font-semibold text-sm hover:bg-teal hover:text-white transition-colors"
+              >
+                View Blog
+              </button>
+            </a>
+          </div>
         </div>
       </section>
     </div>

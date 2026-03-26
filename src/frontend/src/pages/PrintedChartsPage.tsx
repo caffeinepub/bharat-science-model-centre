@@ -66,10 +66,10 @@ const SUBCATEGORIES = [
 
 export default function PrintedChartsPage() {
   useSEO({
-    title:
-      "Printed Educational Charts | Science, Hindi, English, Sanskrit Charts | BSMC India",
+    title: "Printed Educational Charts for Schools | BSMC",
     description:
-      "High-quality printed educational charts for biology, chemistry, physics, mathematics, Hindi, English, Sanskrit, and primary school subjects. Wholesale supplier — Gurugram, India.",
+      "High-quality printed charts for Physics, Chemistry, Biology, Mathematics, and all school subjects. Wholesale pricing for schools across India.",
+    canonical: "https://bharatsciencemodel.in/printed-charts",
   });
   return (
     <div className="min-h-screen bg-section-alt">

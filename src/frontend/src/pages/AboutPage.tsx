@@ -40,9 +40,10 @@ const ABOUT_HIGHLIGHTS = [
 export default function AboutPage() {
   useSEO({
     title:
-      "About Bharat Science Model Centre | Lab Equipment Supplier Since 1993 | Gurugram",
+      "About Bharat Science Model Centre | Lab Equipment Supplier Since 1993",
     description:
-      "Learn about BSMC — India's trusted educational supplies and science lab equipment supplier since 1993. Serving 840+ schools and institutions across India from Gurugram, Haryana.",
+      "Learn about BSMC — India's trusted science lab equipment supplier since 1993. Serving 840+ schools with chemistry, physics, biology lab apparatus from Gurugram, Haryana.",
+    canonical: "https://bharatsciencemodel.in/about",
   });
   const navigate = useNavigate();
 
