@@ -32,6 +32,13 @@ export interface Catalogue {
     description: string;
     uploadDate: Time;
 }
+export interface ProjectPDF {
+    id: bigint;
+    title: string;
+    subject: string;
+    description: string;
+    price: bigint;
+}
 export enum UserRole {
     admin = "admin",
     user = "user",
@@ -47,4 +54,14 @@ export interface backendInterface {
     listCatalogues(): Promise<Array<Catalogue>>;
     submitEnquiry(name: string, email: string, phone: string, organization: string, message: string, attachment: ExternalBlob | null): Promise<bigint>;
     uploadCatalogue(title: string, description: string, file: ExternalBlob): Promise<bigint>;
+    // Project PDF methods
+    addProjectPDF(title: string, subject: string, description: string, downloadLink: string): Promise<bigint>;
+    deleteProjectPDF(id: bigint): Promise<void>;
+    listProjectsBySubject(subject: string): Promise<Array<{id: bigint; title: string; subject: string; description: string; price: bigint}>>;
+    listAllProjects(): Promise<Array<{id: bigint; title: string; subject: string; description: string; price: bigint}>>;
+    getProjectDownloadLink(projectId: bigint): Promise<{__kind__: "Some", value: string} | {__kind__: "None"}>;
+    createProjectCheckoutSession(projectId: bigint, successUrl: string, cancelUrl: string): Promise<string>;
+    // Stripe config methods
+    isStripeConfigured(): Promise<boolean>;
+    setStripeConfiguration(secretKey: string, allowedCountries: string[]): Promise<void>;
 }

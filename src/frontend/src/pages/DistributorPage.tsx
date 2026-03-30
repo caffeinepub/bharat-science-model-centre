@@ -78,7 +78,7 @@ export default function DistributorPage() {
     title: "Become a Distributor | Bharat Science Model Centre Lab Equipment",
     description:
       "Join BSMC's distributor network for science lab equipment in India. High margins, 7800+ products, and 30+ years brand trust. Apply today.",
-    canonical: "https://bharatsciencemodel.in/distributor",
+    canonical: "https://bharatedumart.com/distributor",
   });
   return (
     <div className="min-h-screen bg-background">

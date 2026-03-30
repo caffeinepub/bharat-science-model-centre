@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bharatsciencemodel.in/sitemap.xml
+Sitemap: https://bharatedumart.com/sitemap.xml
 
 Disallow: /admin
 Disallow: /admin/*

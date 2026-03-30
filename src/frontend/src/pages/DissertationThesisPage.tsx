@@ -7,37 +7,37 @@ import { useEffect } from "react";
 const SUBCATEGORIES = [
   {
     name: "MBA / BBA",
-    img: "/assets/generated/cat-dissertation-thesis.dim_400x300.jpg",
+    img: "/assets/generated/cat-dissertation-mba-bba.dim_400x300.jpg",
     desc: "Professional dissertation and thesis writing for MBA and BBA students covering management, marketing, HR, and finance topics.",
   },
   {
     name: "LAW",
-    img: "/assets/generated/cat-dissertation-thesis.dim_400x300.jpg",
+    img: "/assets/generated/cat-dissertation-law.dim_400x300.jpg",
     desc: "Legal research dissertations and thesis projects covering constitutional law, criminal law, corporate law, and more.",
   },
   {
     name: "PSYCHOLOGY",
-    img: "/assets/generated/cat-dissertation-thesis.dim_400x300.jpg",
+    img: "/assets/generated/cat-dissertation-psychology.dim_400x300.jpg",
     desc: "Psychology research dissertations covering clinical, educational, and organizational psychology topics with proper referencing.",
   },
   {
     name: "ENGLISH HONOURS",
-    img: "/assets/generated/cat-dissertation-thesis.dim_400x300.jpg",
+    img: "/assets/generated/cat-dissertation-english-honours.dim_400x300.jpg",
     desc: "English literature and language dissertations for Honours students — critical analysis, literary theory, and research projects.",
   },
   {
     name: "ENGINEERING",
-    img: "/assets/generated/cat-dissertation-thesis.dim_400x300.jpg",
+    img: "/assets/generated/cat-dissertation-engineering.dim_400x300.jpg",
     desc: "Technical thesis projects for engineering students in CSE, ECE, Mechanical, Civil, and other engineering disciplines.",
   },
   {
     name: "B.SC / M.SC",
-    img: "/assets/generated/cat-dissertation-thesis.dim_400x300.jpg",
+    img: "/assets/generated/cat-dissertation-bsc-msc.dim_400x300.jpg",
     desc: "Science research dissertations and thesis for B.Sc and M.Sc students in Physics, Chemistry, Biology, and Mathematics.",
   },
   {
     name: "B.COM / M.COM",
-    img: "/assets/generated/cat-dissertation-thesis.dim_400x300.jpg",
+    img: "/assets/generated/cat-dissertation-bcom-mcom.dim_400x300.jpg",
     desc: "Commerce research projects and dissertations for B.Com and M.Com students in accounting, finance, and taxation.",
   },
 ];

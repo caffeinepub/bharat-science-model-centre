@@ -17,18 +17,18 @@ export default function BlogPage() {
     title: "Science Lab Equipment Blog | Bharat Science Model Centre",
     description:
       "Expert articles on school lab equipment, microscopes, CBSE lab requirements, and educational supplies for Indian schools and colleges.",
-    canonical: "https://bharatsciencemodel.in/blog",
+    canonical: "https://bharatedumart.com/blog",
     schema: {
       "@context": "https://schema.org",
       "@type": "Blog",
       name: "BSMC Science Lab Blog",
-      url: "https://bharatsciencemodel.in/blog",
+      url: "https://bharatedumart.com/blog",
       description:
         "Expert articles on school lab equipment, microscopes, CBSE lab requirements, and educational supplies for Indian schools and colleges.",
       publisher: {
         "@type": "Organization",
         name: "Bharat Science Model Centre",
-        url: "https://bharatsciencemodel.in",
+        url: "https://bharatedumart.com",
       },
     },
   });

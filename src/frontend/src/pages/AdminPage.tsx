@@ -1,4 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import {
   Table,
   TableBody,
@@ -8,13 +17,19 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Textarea } from "@/components/ui/textarea";
 import { useInternetIdentity } from "@/hooks/useInternetIdentity";
 import {
+  useAddProjectPDF,
   useDeleteCatalogue,
   useDeleteEnquiry,
+  useDeleteProjectPDF,
   useGetAllEnquiries,
   useIsAdmin,
+  useIsStripeConfigured,
+  useListAllProjects,
   useListCatalogues,
+  useSetStripeConfiguration,
 } from "@/hooks/useQueries";
 import { useQueryClient } from "@tanstack/react-query";
 import {
@@ -23,11 +38,41 @@ import {
   FileText,
   Loader2,
   LogIn,
+  Plus,
+  Settings,
   Trash2,
   Users,
 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+
+const SUBJECTS = [
+  "physics",
+  "chemistry",
+  "biology",
+  "economics",
+  "accountancy",
+  "business-studies",
+  "physical-education",
+  "political-science",
+  "sociology",
+  "psychology",
+  "history",
+];
+
+const SUBJECT_LABELS: Record<string, string> = {
+  physics: "Physics",
+  chemistry: "Chemistry",
+  biology: "Biology",
+  economics: "Economics",
+  accountancy: "Accountancy",
+  "business-studies": "Business Studies",
+  "physical-education": "Physical Education",
+  "political-science": "Political Science",
+  sociology: "Sociology",
+  psychology: "Psychology",
+  history: "History",
+};
 
 function formatDate(ns: bigint) {
   return new Date(Number(ns / BigInt(1_000_000))).toLocaleDateString("en-IN", {
@@ -46,9 +91,25 @@ export default function AdminPage() {
   const { data: enquiries, isLoading: enquiriesLoading } = useGetAllEnquiries();
   const { data: catalogues, isLoading: cataloguesLoading } =
     useListCatalogues();
+  const { data: projects, isLoading: projectsLoading } = useListAllProjects();
+  const { data: stripeConfigured } = useIsStripeConfigured();
   const deleteEnquiry = useDeleteEnquiry();
   const deleteCatalogue = useDeleteCatalogue();
+  const deleteProject = useDeleteProjectPDF();
+  const addProject = useAddProjectPDF();
+  const setStripeConfig = useSetStripeConfiguration();
   const [activeTab, setActiveTab] = useState("enquiries");
+
+  // Add project form state
+  const [projectForm, setProjectForm] = useState({
+    subject: "",
+    title: "",
+    description: "",
+    downloadLink: "",
+  });
+
+  // Stripe form state
+  const [stripeKey, setStripeKey] = useState("");
 
   const handleLogin = async () => {
     try {
@@ -83,6 +144,58 @@ export default function AdminPage() {
       toast.success("Catalogue deleted.");
     } catch {
       toast.error("Failed to delete.");
+    }
+  };
+
+  const handleDeleteProject = async (id: bigint) => {
+    if (!confirm("Delete this project?")) return;
+    try {
+      await deleteProject.mutateAsync(id);
+      toast.success("Project deleted.");
+    } catch {
+      toast.error("Failed to delete.");
+    }
+  };
+
+  const handleAddProject = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (
+      !projectForm.subject ||
+      !projectForm.title ||
+      !projectForm.downloadLink
+    ) {
+      toast.error("Please fill all required fields.");
+      return;
+    }
+    try {
+      await addProject.mutateAsync(projectForm);
+      toast.success("Project added successfully!");
+      setProjectForm({
+        subject: "",
+        title: "",
+        description: "",
+        downloadLink: "",
+      });
+    } catch {
+      toast.error("Failed to add project.");
+    }
+  };
+
+  const handleSaveStripe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!stripeKey) {
+      toast.error("Please enter your Stripe Secret Key.");
+      return;
+    }
+    try {
+      await setStripeConfig.mutateAsync({
+        secretKey: stripeKey,
+        allowedCountries: ["IN"],
+      });
+      toast.success("Stripe configured successfully!");
+      setStripeKey("");
+    } catch {
+      toast.error("Failed to configure Stripe.");
     }
   };
 
@@ -203,6 +316,14 @@ export default function AdminPage() {
             >
               <BookOpen className="w-4 h-4" />
               Catalogues ({catalogues?.length ?? 0})
+            </TabsTrigger>
+            <TabsTrigger
+              value="projects"
+              className="flex items-center gap-2"
+              data-ocid="admin.projects_tab"
+            >
+              <FileText className="w-4 h-4" />
+              Projects ({projects?.length ?? 0})
             </TabsTrigger>
           </TabsList>
 
@@ -377,7 +498,254 @@ export default function AdminPage() {
               )}
             </div>
           </TabsContent>
+
+          <TabsContent value="projects" data-ocid="admin.projects_panel">
+            {/* Stripe configuration */}
+            <div className="bg-white rounded-xl border border-card-border shadow-card p-6 mb-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Settings className="w-5 h-5 text-teal" />
+                <h2 className="font-bold text-foreground">
+                  Stripe Payment Configuration
+                </h2>
+                {stripeConfigured ? (
+                  <span className="ml-auto text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">
+                    ✓ Configured
+                  </span>
+                ) : (
+                  <span className="ml-auto text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full font-semibold">
+                    Not configured
+                  </span>
+                )}
+              </div>
+              {stripeConfigured ? (
+                <p className="text-sm text-muted-foreground">
+                  Stripe is configured. To update the key, enter a new one
+                  below.
+                </p>
+              ) : (
+                <p className="text-sm text-amber-700 mb-3">
+                  ⚠️ Stripe is not configured. Students cannot pay until you add
+                  your Stripe Secret Key.
+                </p>
+              )}
+              <form onSubmit={handleSaveStripe} className="flex gap-3 mt-3">
+                <Input
+                  type="password"
+                  placeholder="Stripe Secret Key (sk_live_... or sk_test_...)"
+                  value={stripeKey}
+                  onChange={(e) => setStripeKey(e.target.value)}
+                  className="flex-1"
+                  data-ocid="admin.stripe_key_input"
+                />
+                <Button
+                  type="submit"
+                  disabled={setStripeConfig.isPending}
+                  className="bg-teal hover:bg-teal-hover text-white rounded-full whitespace-nowrap"
+                  data-ocid="admin.stripe_save_button"
+                >
+                  {setStripeConfig.isPending ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    "Save Key"
+                  )}
+                </Button>
+              </form>
+              <p className="text-xs text-muted-foreground mt-2">
+                Countries allowed for payment: India (IN). Contact support to
+                add more.
+              </p>
+            </div>
+
+            {/* Add Project form */}
+            <div className="bg-white rounded-xl border border-card-border shadow-card p-6 mb-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Plus className="w-5 h-5 text-teal" />
+                <h2 className="font-bold text-foreground">
+                  Add New Project PDF
+                </h2>
+              </div>
+              <form
+                onSubmit={handleAddProject}
+                className="grid grid-cols-1 sm:grid-cols-2 gap-4"
+                data-ocid="admin.add_project_form"
+              >
+                <div>
+                  <Label
+                    htmlFor="project-subject"
+                    className="text-sm font-medium mb-1 block"
+                  >
+                    Subject *
+                  </Label>
+                  <Select
+                    value={projectForm.subject}
+                    onValueChange={(v) =>
+                      setProjectForm((p) => ({ ...p, subject: v }))
+                    }
+                  >
+                    <SelectTrigger
+                      id="project-subject"
+                      data-ocid="admin.project_subject_select"
+                    >
+                      <SelectValue placeholder="Select subject" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {SUBJECTS.map((s) => (
+                        <SelectItem key={s} value={s}>
+                          {SUBJECT_LABELS[s]}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label
+                    htmlFor="project-title"
+                    className="text-sm font-medium mb-1 block"
+                  >
+                    Title *
+                  </Label>
+                  <Input
+                    id="project-title"
+                    placeholder="e.g. Study of Ohm's Law"
+                    value={projectForm.title}
+                    onChange={(e) =>
+                      setProjectForm((p) => ({ ...p, title: e.target.value }))
+                    }
+                    data-ocid="admin.project_title_input"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <Label
+                    htmlFor="project-desc"
+                    className="text-sm font-medium mb-1 block"
+                  >
+                    Description
+                  </Label>
+                  <Textarea
+                    id="project-desc"
+                    placeholder="Brief description of the project content..."
+                    value={projectForm.description}
+                    onChange={(e) =>
+                      setProjectForm((p) => ({
+                        ...p,
+                        description: e.target.value,
+                      }))
+                    }
+                    rows={2}
+                    data-ocid="admin.project_description_textarea"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <Label
+                    htmlFor="project-link"
+                    className="text-sm font-medium mb-1 block"
+                  >
+                    Google Drive Download Link *
+                  </Label>
+                  <Input
+                    id="project-link"
+                    placeholder="https://drive.google.com/file/d/.../view"
+                    value={projectForm.downloadLink}
+                    onChange={(e) =>
+                      setProjectForm((p) => ({
+                        ...p,
+                        downloadLink: e.target.value,
+                      }))
+                    }
+                    data-ocid="admin.project_link_input"
+                  />
+                </div>
+                <div className="sm:col-span-2">
+                  <Button
+                    type="submit"
+                    disabled={addProject.isPending}
+                    className="bg-teal hover:bg-teal-hover text-white rounded-full"
+                    data-ocid="admin.add_project_submit_button"
+                  >
+                    {addProject.isPending ? (
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                    ) : (
+                      <Plus className="w-4 h-4 mr-2" />
+                    )}
+                    Add Project
+                  </Button>
+                </div>
+              </form>
+            </div>
+
+            {/* Projects table */}
+            <div className="bg-white rounded-xl border border-card-border shadow-card overflow-hidden">
+              <div className="p-4 border-b border-card-border">
+                <h2 className="font-bold text-foreground">
+                  All Projects ({projects?.length ?? 0})
+                </h2>
+              </div>
+              {projectsLoading ? (
+                <div
+                  className="flex items-center justify-center py-16"
+                  data-ocid="admin.projects_loading_state"
+                >
+                  <Loader2 className="w-6 h-6 animate-spin text-teal" />
+                </div>
+              ) : !projects || projects.length === 0 ? (
+                <div
+                  className="text-center py-16 text-muted-text"
+                  data-ocid="admin.projects_empty_state"
+                >
+                  No projects added yet. Use the form above to add projects.
+                </div>
+              ) : (
+                <div className="overflow-x-auto">
+                  <Table data-ocid="admin.projects_table">
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Subject</TableHead>
+                        <TableHead>Title</TableHead>
+                        <TableHead>Description</TableHead>
+                        <TableHead>Price</TableHead>
+                        <TableHead>Actions</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {projects.map((project, i) => (
+                        <TableRow
+                          key={String(project.id)}
+                          data-ocid={`admin.projects_row.${i + 1}`}
+                        >
+                          <TableCell className="font-medium">
+                            {SUBJECT_LABELS[project.subject] ?? project.subject}
+                          </TableCell>
+                          <TableCell>{project.title}</TableCell>
+                          <TableCell className="text-sm text-muted-text max-w-xs">
+                            <p className="truncate">
+                              {project.description || "-"}
+                            </p>
+                          </TableCell>
+                          <TableCell className="font-semibold text-teal">
+                            ₹{Number(project.price)}
+                          </TableCell>
+                          <TableCell>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => handleDeleteProject(project.id)}
+                              disabled={deleteProject.isPending}
+                              className="text-destructive hover:text-destructive hover:bg-destructive/10"
+                              data-ocid={`admin.project_delete_button.${i + 1}`}
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+              )}
+            </div>
+          </TabsContent>
         </Tabs>
+
         <div className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6">
           <h3 className="font-bold text-blue-900 mb-3">
             📊 SEO Setup Guidance
@@ -402,7 +770,7 @@ export default function AdminPage() {
                 <li>
                   Submit your sitemap:{" "}
                   <code className="bg-blue-100 px-1 rounded">
-                    https://bharatsciencemodel.in/sitemap.xml
+                    https://bharatedumart.com/sitemap.xml
                   </code>
                 </li>
               </ol>

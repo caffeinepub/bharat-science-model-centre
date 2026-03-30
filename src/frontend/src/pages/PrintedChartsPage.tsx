@@ -69,7 +69,7 @@ export default function PrintedChartsPage() {
     title: "Printed Educational Charts for Schools | BSMC",
     description:
       "High-quality printed charts for Physics, Chemistry, Biology, Mathematics, and all school subjects. Wholesale pricing for schools across India.",
-    canonical: "https://bharatsciencemodel.in/printed-charts",
+    canonical: "https://bharatedumart.com/printed-charts",
   });
   return (
     <div className="min-h-screen bg-section-alt">

@@ -44,7 +44,7 @@ export default function EnquiryPage() {
     title: "Get a Quote | Science Lab Equipment Enquiry | BSMC",
     description:
       "Send an enquiry for school lab equipment, CBSE lab packages, microscopes, chemistry glassware, and educational supplies. Get a customized quote from BSMC.",
-    canonical: "https://bharatsciencemodel.in/enquiry",
+    canonical: "https://bharatedumart.com/enquiry",
   });
   const [form, setForm] = useState({
     name: "",

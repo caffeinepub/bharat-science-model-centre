@@ -41,7 +41,7 @@ export default function SchoolLabPackagePage() {
     title: "CBSE School Lab Packages | Complete Lab Setup | BSMC India",
     description:
       "Ready-to-use CBSE-aligned lab packages for Chemistry, Physics, Biology, Mathematics, and Composite science labs. Bulk pricing for schools across India.",
-    canonical: "https://bharatsciencemodel.in/school-lab-package",
+    canonical: "https://bharatedumart.com/school-lab-package",
   });
   return (
     <div className="min-h-screen bg-section-alt">

@@ -7,16 +7,21 @@ import BlogPostPage from "@/pages/BlogPostPage";
 import CataloguePage from "@/pages/CataloguePage";
 import DissertationThesisPage from "@/pages/DissertationThesisPage";
 import DistributorPage from "@/pages/DistributorPage";
+import DownloadProjectsPage from "@/pages/DownloadProjectsPage";
 import EngineeringLabPage from "@/pages/EngineeringLabPage";
 import EnquiryPage from "@/pages/EnquiryPage";
 import HandwrittenPracticalFilesPage from "@/pages/HandwrittenPracticalFilesPage";
 import HandwrittenProjectsPage from "@/pages/HandwrittenProjectsPage";
 import HomePage from "@/pages/HomePage";
 import IGNOUAssignmentsPage from "@/pages/IGNOUAssignmentsPage";
+import MEdBEdDEledPage from "@/pages/MEdBEdDEledPage";
+import PaymentFailurePage from "@/pages/PaymentFailurePage";
+import PaymentSuccessPage from "@/pages/PaymentSuccessPage";
 import PortraitsPage from "@/pages/PortraitsPage";
 import PrintedChartsPage from "@/pages/PrintedChartsPage";
 import SafetyEquipmentPage from "@/pages/SafetyEquipmentPage";
 import SchoolLabPackagePage from "@/pages/SchoolLabPackagePage";
+import SubjectProjectsPage from "@/pages/SubjectProjectsPage";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   RouterProvider,
@@ -109,6 +114,12 @@ const handwrittenPracticalFilesRoute = createRoute({
   component: HandwrittenPracticalFilesPage,
 });
 
+const medBedDEledRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/med-bed-deled",
+  component: MEdBEdDEledPage,
+});
+
 const dissertationThesisRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/dissertation-thesis",
@@ -133,6 +144,30 @@ const blogPostRoute = createRoute({
   component: BlogPostPage,
 });
 
+const downloadProjectsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/download-projects",
+  component: DownloadProjectsPage,
+});
+
+const subjectProjectsRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/download-projects/$subject",
+  component: SubjectProjectsPage,
+});
+
+const paymentSuccessRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/payment-success",
+  component: PaymentSuccessPage,
+});
+
+const paymentFailureRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/payment-failure",
+  component: PaymentFailurePage,
+});
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
   aboutRoute,
@@ -148,9 +183,14 @@ const routeTree = rootRoute.addChildren([
   handwrittenProjectsRoute,
   handwrittenPracticalFilesRoute,
   ignoRoute,
+  medBedDEledRoute,
   dissertationThesisRoute,
   blogRoute,
   blogPostRoute,
+  downloadProjectsRoute,
+  subjectProjectsRoute,
+  paymentSuccessRoute,
+  paymentFailureRoute,
 ]);
 
 const router = createRouter({ routeTree });

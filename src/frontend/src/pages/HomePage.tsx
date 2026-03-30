@@ -83,6 +83,8 @@ type Category = {
   handwrittenProjectsUrl?: string;
   handwrittenPracticalFilesUrl?: string;
   ignoUrl?: string;
+  medUrl?: string;
+  downloadProjectsUrl?: string;
 };
 
 const CATEGORIES: Category[] = [
@@ -295,11 +297,18 @@ const CATEGORIES: Category[] = [
     name: "M.Ed / B.Ed / D.El.Ed",
     img: "/assets/generated/cat-med-bed-education.dim_400x300.jpg",
     desc: "Teacher education materials, lesson plans, practice teaching records, and B.Ed/M.Ed project files",
+    medUrl: "/med-bed-deled",
   },
   {
     name: "STEM Kits",
     img: "/assets/generated/cat-stem-kits-realistic.dim_400x300.jpg",
     desc: "Hands-on STEM activity kits covering Science, Technology, Engineering, and Mathematics for all school levels",
+  },
+  {
+    name: "Download Project PDF",
+    img: "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=300&fit=crop",
+    desc: "Download handwritten CBSE/ICSE project PDFs for ₹49. Physics, Chemistry, Biology, Economics & more.",
+    downloadProjectsUrl: "/download-projects",
   },
 ];
 
@@ -629,6 +638,35 @@ function CategoryButton({ cat, i }: { cat: Category; i: number }) {
     );
   }
 
+  if (cat.medUrl) {
+    return (
+      <Link
+        to="/med-bed-deled"
+        className="inline-block text-xs font-semibold border border-teal text-teal hover:bg-teal hover:text-white transition-colors px-3 py-1.5 rounded-full"
+        data-ocid="categories.med.button"
+      >
+        View Sub-Categories →
+      </Link>
+    );
+  }
+
+  if (cat.downloadProjectsUrl) {
+    return (
+      <a
+        href={cat.downloadProjectsUrl}
+        onClick={(e) => {
+          e.preventDefault();
+          (window as any).__router?.navigate({ to: cat.downloadProjectsUrl! });
+          window.location.href = cat.downloadProjectsUrl!;
+        }}
+        className="block w-full text-center text-xs font-semibold py-2 px-3 rounded-lg bg-green-600 hover:bg-green-700 text-white transition-colors"
+        data-ocid="categories.download_projects.button"
+      >
+        ⬇️ Download PDF — ₹49
+      </a>
+    );
+  }
+
   return (
     <Link
       to="/enquiry"
@@ -643,10 +681,10 @@ function CategoryButton({ cat, i }: { cat: Category; i: number }) {
 export default function HomePage() {
   useSEO({
     title:
-      "Bharat Science Model Centre | Lab Equipment & Educational Supplies Supplier | Gurugram, India",
+      "Bharat EduMart – School Lab Equipment, Microscopes & Science Models Supplier in India",
     description:
-      "BSMC — India's trusted supplier of science lab equipment, chemistry glassware, physics instruments, biology supplies, STEM kits & school lab packages. 840+ schools served since 1993. Gurugram, Haryana.",
-    canonical: "https://bharatsciencemodel.in/",
+      "Bharat EduMart is the online sales initiative of Bharat Science Model Centre – India's trusted supplier of school lab equipment, microscopes, chemistry & physics apparatus, STEM kits, and science models. Serving 840+ schools since 1993. Gurugram, Haryana.",
+    canonical: "https://bharatedumart.com/",
     schema: {
       "@context": "https://schema.org",
       "@type": "FAQPage",
@@ -1414,19 +1452,23 @@ export default function HomePage() {
       <section id="about-bsmc-full" className="py-10 md:py-16 bg-background">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-5">
-            Bharat Science Model Centre — School Lab Equipment Supplier in India
+            Bharat EduMart – School Lab Equipment, Microscopes & Science Models
+            Online
           </h2>
           <p className="text-muted-text leading-relaxed mb-7">
-            Founded in 1993 in Gurugram, Haryana,{" "}
-            <strong>Bharat Science Model Centre (BSMC)</strong> is one of
-            India&apos;s most trusted suppliers of school lab equipment and
-            educational supplies. Over three decades, we have served{" "}
+            <strong>Bharat EduMart</strong> (bharatedumart.com) is the online
+            sales initiative of{" "}
+            <strong>Bharat Science Model Centre (BSMC)</strong>, established in
+            Gurugram, Haryana in 1993. Through bharatedumart.com, schools and
+            institutions across India can order 7,800+ science lab equipment,
+            educational supplies, and school project items online with same-day
+            dispatch. Over three decades, we have served{" "}
             <strong>840+ schools, colleges, and institutions</strong> across
-            India — supplying <strong>7,800+ products</strong> covering science
-            lab apparatus, chemistry glassware, physics instruments, biology lab
-            items, STEM kits, and comprehensive school educational solutions.
-            From individual instruments to complete lab setups, BSMC is the
-            preferred partner for science education in India.
+            India — supplying science lab apparatus, chemistry glassware,
+            physics instruments, biology lab items, STEM kits, and comprehensive
+            school educational solutions. From individual instruments to
+            complete lab setups, Bharat EduMart is the preferred online partner
+            for science education in India.
           </p>
 
           <h3 className="text-xl font-bold text-foreground mb-3">

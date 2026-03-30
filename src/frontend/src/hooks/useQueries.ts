@@ -1,5 +1,6 @@
 import type { ExternalBlob } from "@/backend";
 import { useActor } from "@/hooks/useActor";
+import type { ExtendedBackend } from "@/types/projects";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export function useListCatalogues() {
@@ -103,5 +104,126 @@ export function useIsAdmin() {
       return actor.isCallerAdmin();
     },
     enabled: !!actor && !isFetching,
+  });
+}
+
+// Project PDF hooks
+export function useListProjectsBySubject(subject: string) {
+  const { actor, isFetching } = useActor();
+  return useQuery({
+    queryKey: ["projects", subject],
+    queryFn: async () => {
+      if (!actor) return [];
+      return (actor as unknown as ExtendedBackend).listProjectsBySubject(
+        subject,
+      );
+    },
+    enabled: !!actor && !isFetching && !!subject,
+  });
+}
+
+export function useListAllProjects() {
+  const { actor, isFetching } = useActor();
+  return useQuery({
+    queryKey: ["projects", "all"],
+    queryFn: async () => {
+      if (!actor) return [];
+      return (actor as unknown as ExtendedBackend).listAllProjects();
+    },
+    enabled: !!actor && !isFetching,
+  });
+}
+
+export function useAddProjectPDF() {
+  const { actor } = useActor();
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (data: {
+      title: string;
+      subject: string;
+      description: string;
+      downloadLink: string;
+    }) => {
+      if (!actor) throw new Error("Not connected");
+      return (actor as unknown as ExtendedBackend).addProjectPDF(
+        data.title,
+        data.subject,
+        data.description,
+        data.downloadLink,
+      );
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["projects"] }),
+  });
+}
+
+export function useDeleteProjectPDF() {
+  const { actor } = useActor();
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (id: bigint) => {
+      if (!actor) throw new Error("Not connected");
+      return (actor as unknown as ExtendedBackend).deleteProjectPDF(id);
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["projects"] }),
+  });
+}
+
+export function useGetProjectDownloadLink() {
+  const { actor } = useActor();
+  return useMutation({
+    mutationFn: async (projectId: bigint) => {
+      if (!actor) throw new Error("Not connected");
+      return (actor as unknown as ExtendedBackend).getProjectDownloadLink(
+        projectId,
+      );
+    },
+  });
+}
+
+export function useCreateProjectCheckoutSession() {
+  const { actor } = useActor();
+  return useMutation({
+    mutationFn: async (data: {
+      projectId: bigint;
+      successUrl: string;
+      cancelUrl: string;
+    }) => {
+      if (!actor) throw new Error("Not connected");
+      return (actor as unknown as ExtendedBackend).createProjectCheckoutSession(
+        data.projectId,
+        data.successUrl,
+        data.cancelUrl,
+      );
+    },
+  });
+}
+
+export function useIsStripeConfigured() {
+  const { actor, isFetching } = useActor();
+  return useQuery({
+    queryKey: ["stripeConfigured"],
+    queryFn: async () => {
+      if (!actor) return false;
+      return (actor as unknown as ExtendedBackend).isStripeConfigured();
+    },
+    enabled: !!actor && !isFetching,
+  });
+}
+
+export function useSetStripeConfiguration() {
+  const { actor } = useActor();
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (data: {
+      secretKey: string;
+      allowedCountries: string[];
+    }) => {
+      if (!actor) throw new Error("Not connected");
+      return (actor as unknown as ExtendedBackend).setStripeConfiguration(
+        data.secretKey,
+        data.allowedCountries,
+      );
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["stripeConfigured"] }),
   });
 }

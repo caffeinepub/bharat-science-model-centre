@@ -654,3 +654,324 @@ BSMC stocks a complete range of physics lab instruments — from vernier caliper
     `,
   },
 ];
+
+// New SEO blog posts added 2026-03-26
+export const BLOG_POSTS_EXTRA = [
+  {
+    slug: "cbse-school-lab-equipment-complete-list",
+    title: "Complete List of School Lab Equipment (CBSE) – Classes 6 to 12",
+    date: "2026-03-26",
+    readTime: "10 min",
+    excerpt:
+      "A comprehensive CBSE-aligned checklist of all science lab equipment required for Classes 6 to 12 — Biology, Chemistry, Physics, and Mathematics. Perfect for school administrators, lab in-charges, and procurement teams.",
+    keywords: [
+      "CBSE lab equipment list",
+      "school lab equipment checklist India",
+      "science lab apparatus Classes 6 to 12",
+      "NCERT lab equipment requirements",
+      "biology chemistry physics lab items",
+      "school lab equipment supplier India",
+      "buy lab equipment online India",
+    ],
+    content: `
+## CBSE Lab Equipment: What Every School Needs
+
+The Central Board of Secondary Education (CBSE) mandates that all affiliated schools maintain properly equipped science laboratories for Classes 6 through 12. Practical examinations contribute significantly to board results — up to 30% in senior secondary sciences — making lab equipment a critical academic investment.
+
+---
+
+## Biology Lab Equipment — CBSE Classes 6–12
+
+### Microscopes (Most Critical)
+- **Monocular compound microscope** (40x–400x) — for Classes 6–8
+- **Binocular compound microscope** (40x–1000x) — for Classes 9–12
+- **Stereo/dissection microscope** — for Class 11–12 biology practicals
+- **Pre-prepared slides set** — onion cells, cheek cells, bacteria, blood smears, T.S. leaf, etc.
+- **Blank slides and cover slips** (box of 72)
+
+### Dissection & Observation Equipment
+- **Dissection kits** (tray, forceps, needles, scissors, scalpel) — 1 per student
+- **Hand lens / magnifying glass** (10x) — 1 per student
+- **Petri dishes** (glass and plastic)
+- **Watch glasses** and specimen jars
+
+### Models and Charts
+- **Human anatomy models** — heart, eye, ear, brain, kidney, skeletal system
+- **Plant cell and animal cell 3D models**
+- **DNA double helix model**
+- **Biology printed charts** — cell division, photosynthesis, human organ systems
+
+### Reagents for Biology
+- Iodine solution, safranin, methylene blue, crystal violet
+- Distilled water (5L bottles)
+- 70% ethanol (for preservation)
+
+---
+
+## Chemistry Lab Equipment — CBSE Classes 9–12
+
+### Glassware (Most Essential)
+- **Beakers** (50ml, 100ml, 250ml, 500ml, 1000ml)
+- **Conical flasks** (100ml, 250ml, 500ml)
+- **Test tubes** (borosilicate, pack of 50) — multiple packs
+- **Test tube holders and racks**
+- **Burettes** (50ml, with stand)
+- **Pipettes** (graduated, 5ml and 10ml)
+- **Measuring cylinders** (10ml, 25ml, 50ml, 100ml, 250ml)
+
+### Heating and Support Equipment
+- **Bunsen burners or spirit lamps** — 1 per student station
+- **Tripod stands** with **wire gauze** — 1 per station
+- **Iron stand with boss and clamp** — 2 per station
+
+### Balances and Measurement
+- **Chemical balance** (electronic, 200g capacity, 0.001g precision) — minimum 2 per class
+
+### Safety Equipment (Mandatory)
+- **Safety goggles** — 1 per student
+- **Lab coats** — 1 per student
+- **Chemical-resistant gloves** (nitrile, box of 50)
+- **Fire extinguisher** (CO₂)
+
+### Chemical Reagents
+All CBSE-required reagents including: HCl, H₂SO₄, NaOH, Na₂CO₃, Copper sulphate, Phenolphthalein, Universal indicator, Potassium permanganate.
+
+---
+
+## Physics Lab Equipment — CBSE Classes 9–12
+
+### Measurement Instruments
+- **Vernier caliper** (0–15cm, 0.1mm LC) — 1 per 2 students
+- **Screw gauge** (0.01mm LC) — 1 per 2 students
+- **Meter scales** (100cm, wooden) — 1 per student
+- **Spring balances** (0–100g, 0–500g, 0–1kg) — sets
+
+### Optics Equipment
+- **Optical bench** (2-meter, with holders) — 1 per 2 students
+- **Convex lenses** (various focal lengths: 5, 10, 15, 20cm)
+- **Concave and convex mirrors** (with holders)
+- **Glass prisms** (equilateral, 60°)
+
+### Electricity & Electronics
+- **Ammeters** (analog, 0–1A and 0–5A)
+- **Voltmeters** (analog, 0–3V and 0–15V)
+- **Rheostats** (50Ω and 100Ω)
+- **Battery eliminators** (0–12V variable)
+- **Connecting wires** with crocodile clips
+
+---
+
+## Mathematics Lab Equipment — CBSE
+
+- **Geometry boards** and coordinate grids
+- **3D geometric solids set** (cube, cuboid, cone, cylinder, sphere, pyramid)
+- **Mathematical models** for theorems (Pythagoras, volume/surface area)
+
+---
+
+## How to Procure CBSE Lab Equipment
+
+**Bharat EduMart** (bharatedumart.com — online sales initiative of Bharat Science Model Centre) supplies all items on this CBSE lab equipment list with same-day dispatch from Gurugram, Haryana. [Send your requirement list today](/enquiry).
+    `,
+  },
+  {
+    slug: "best-microscopes-for-students-india",
+    title: "Best Microscopes for Students in India 2026 – Buying Guide (CBSE)",
+    date: "2026-03-26",
+    readTime: "8 min",
+    excerpt:
+      "Choosing the right microscope for school students in India depends on class level, CBSE requirements, and budget. This buying guide covers the best microscope types, key features to check, and where to buy school microscopes online in India.",
+    keywords: [
+      "best microscope for students India",
+      "buy school microscope online India",
+      "compound microscope for school",
+      "CBSE microscope requirements",
+      "binocular microscope for students",
+      "microscope price India school",
+      "Bharat EduMart microscope",
+    ],
+    content: `
+## Choosing the Best Microscope for School Students in India
+
+A microscope is the most important scientific instrument in any school biology laboratory. **Bharat EduMart** (online sales initiative of Bharat Science Model Centre, Gurugram) has been supplying microscopes to 840+ schools across India since 1993.
+
+---
+
+## Types of Microscopes for Indian School Students
+
+### 1. Monocular Compound Microscope — Best for Classes 6–8
+
+Single eyepiece, magnification 40x to 400x. Suitable for observing plant cells, onion peel, simple microorganisms.
+
+**Key specs:**
+- All-metal body (avoid plastic)
+- LED illumination
+- 3 objective lenses: 4x, 10x, 40x
+- Wide-field eyepiece (WF10x)
+
+**Price range:** ₹2,500 – ₹6,000
+
+---
+
+### 2. Binocular Compound Microscope — Best for Classes 9–12
+
+Two eyepieces, magnification 40x to 1000x. CBSE-required standard for secondary and senior secondary school biology labs.
+
+**Key specs for CBSE Class 9–12:**
+- Magnification: 40x, 100x, 400x, 1000x (oil immersion)
+- Mechanical stage with X-Y movement (mandatory for Class 12)
+- Anti-fungal coated optics
+- LED illumination with variable intensity
+
+**Price range:** ₹7,000 – ₹25,000
+
+---
+
+### 3. Stereo / Dissection Microscope — For Biology Practicals
+
+Low magnification (7x–45x), 3D observation. Used for dissection experiments and larger specimens.
+
+**Price range:** ₹8,000 – ₹20,000
+
+---
+
+## CBSE Microscope Requirements by Class
+
+| Class Level | Required Microscope | Minimum Magnification |
+|---|---|---|
+| Classes 6–8 | Monocular compound | 40x–400x |
+| Classes 9–10 | Binocular compound | 40x–1000x |
+| Class 11–12 | Binocular + mechanical stage | 40x–1000x |
+
+NCERT recommends a minimum ratio of **1 microscope per 2 students**.
+
+---
+
+## 5 Most Important Features to Check
+
+1. **Body material — only metal** (plastic bodies break in school environments)
+2. **Anti-fungal coated optics** (critical for India's humid climate)
+3. **Mechanical stage for Classes 9–12** (mandatory for CBSE Class 12 practicals)
+4. **LED illumination** (reliable in all lighting conditions)
+5. **Service availability** (buy from a supplier who can service locally)
+
+---
+
+## Where to Buy Microscopes Online in India
+
+**Bharat EduMart** (bharatedumart.com) stocks comprehensive CBSE-compliant microscopes for all class levels with same-day dispatch from Gurugram and pan-India delivery. Bulk orders (10+ units) receive competitive wholesale pricing.
+
+**[Send an enquiry](/enquiry)** with your school name, class level, and quantity for a customized quotation within 24 hours. WhatsApp: **+91 9999899973**
+    `,
+  },
+  {
+    slug: "how-to-set-up-school-science-lab",
+    title: "How to Set Up a School Science Lab in India – Step-by-Step Guide",
+    date: "2026-03-26",
+    readTime: "9 min",
+    excerpt:
+      "A practical step-by-step guide to setting up a new school science laboratory in India as per CBSE/NCERT standards — covering space planning, safety, equipment procurement, and budget tips for Biology, Chemistry, and Physics labs.",
+    keywords: [
+      "how to set up school science lab India",
+      "school laboratory setup guide CBSE",
+      "science lab equipment list India",
+      "school lab planning India",
+      "biology chemistry physics lab setup",
+      "school lab supplier India",
+      "Bharat EduMart school lab",
+    ],
+    content: `
+## Setting Up a School Science Lab: A Complete Guide for India
+
+Setting up a science laboratory is one of the most impactful investments a school can make. **Bharat EduMart** (online sales initiative of Bharat Science Model Centre, established 1993) has helped set up laboratories for 840+ schools across India.
+
+---
+
+## Step 1: Define Your Lab Scope and Budget
+
+**Budget planning:**
+- Basic combined lab (Classes 6–8): ₹80,000 – ₹1,50,000
+- Complete secondary lab (Classes 9–10): ₹2,00,000 – ₹3,50,000
+- Full senior secondary lab (Classes 11–12): ₹4,00,000 – ₹8,00,000+
+
+Our [school lab packages](/school-lab-package) provide CBSE-aligned packages at competitive prices for each level.
+
+---
+
+## Step 2: Space Planning and Safety Infrastructure
+
+**Minimum dimensions (NCERT recommendation):**
+- Combined science lab: 90 sq. meters
+- Individual subject lab: 72 sq. meters
+
+**Essential infrastructure:**
+- Work benches (acid-resistant, heat-resistant laminate)
+- Running water at multiple points
+- Earthed power outlets at every student station
+- Cross ventilation and fume hood for Class 11–12 chemistry
+- Lockable chemical storage
+
+**Mandatory safety features:**
+- Fire extinguisher (CO₂ type) — at least 2 per lab
+- First-aid kit mounted on wall
+- Emergency power cutoff switch
+- Safety goggles and lab coats at entrance
+
+---
+
+## Step 3: Equip the Biology Lab
+
+**Priority equipment:**
+1. Compound microscopes — monocular for Classes 6–8, binocular for Classes 9–12
+2. Human anatomy models (heart, eye, ear, brain, kidney)
+3. Dissection kits — 1 per student
+4. Biology charts covering all NCERT topics
+5. Reagents (iodine, safranin, methylene blue)
+
+---
+
+## Step 4: Equip the Chemistry Lab
+
+**Priority equipment:**
+1. Glassware (beakers, conical flasks, test tubes, burettes, pipettes) — buy 20% extra as breakage allowance
+2. Heating equipment — Bunsen burners, tripod stands, wire gauze
+3. Electronic balance — 2 per class
+4. Safety equipment — goggles, lab coats, gloves for every student
+5. Reagents from certified suppliers (CDH, HiMedia, Qualigens)
+
+---
+
+## Step 5: Equip the Physics Lab
+
+**Priority equipment:**
+1. Vernier calipers, screw gauges, meter scales, spring balances
+2. Optical bench, lenses, mirrors, prisms
+3. Ammeters, voltmeters, rheostats, battery eliminators
+4. Simple pendulum setup, inclined planes
+
+---
+
+## Step 6: Procurement Strategy
+
+**Complete School Lab Package (Recommended for new labs):**
+Order a complete CBSE-aligned lab package from Bharat EduMart. Our [school lab packages](/school-lab-package) include all instruments for Chemistry, Physics, Biology, Mathematics, and Composite labs.
+
+---
+
+## Why Choose Bharat EduMart for School Lab Setup?
+
+**Bharat EduMart** (bharatedumart.com) is the online sales initiative of Bharat Science Model Centre, Gurugram, established 1993.
+
+- 840+ schools served across India
+- 7,800+ products in stock
+- CBSE/NCERT aligned lab packages
+- Same-day dispatch, pan-India delivery
+- Expert guidance on lab planning
+
+**[Contact our lab setup team today](/enquiry)** — we will send a comprehensive, customized lab setup quotation within 24 hours. WhatsApp: **+91 9999899973**
+    `,
+  },
+];
+
+// Merge new posts into main array
+BLOG_POSTS.push(...BLOG_POSTS_EXTRA);

@@ -22,7 +22,7 @@ export default function BlogPostPage() {
       ? {
           title: post.title,
           description: post.excerpt,
-          canonical: `https://bharatsciencemodel.in/blog/${post.slug}`,
+          canonical: `https://bharatedumart.com/blog/${post.slug}`,
           schema: {
             "@context": "https://schema.org",
             "@type": "Article",
@@ -37,15 +37,15 @@ export default function BlogPostPage() {
             publisher: {
               "@type": "Organization",
               name: "Bharat Science Model Centre",
-              url: "https://bharatsciencemodel.in",
+              url: "https://bharatedumart.com",
               logo: {
                 "@type": "ImageObject",
-                url: "https://bharatsciencemodel.in/assets/generated/bsmc-logo-transparent.dim_400x400.png",
+                url: "https://bharatedumart.com/assets/generated/bsmc-logo-transparent.dim_400x400.png",
               },
             },
             mainEntityOfPage: {
               "@type": "WebPage",
-              "@id": `https://bharatsciencemodel.in/blog/${slug}`,
+              "@id": `https://bharatedumart.com/blog/${slug}`,
             },
             keywords: post.keywords.join(", "),
           },
